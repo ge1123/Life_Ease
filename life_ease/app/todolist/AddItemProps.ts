@@ -1,0 +1,3 @@
+interface AddItemProps {
+    toggleModal: () => void;
+}
