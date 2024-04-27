@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import DeleteButton from '@/todolist/deleteButton';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 interface TodoItem {
@@ -58,9 +59,7 @@ export default function TodoItem() {
                 <button className="bg-blue-500 text-white px-4 py-2 rounded flex items-center justify-center hover:bg-blue-700 transition-colors">
                   <i className="fas fa-edit align-middle"></i>
                 </button>
-                <button className="bg-red-500 text-white px-4 py-2 rounded flex items-center justify-center">
-                  <i className="fas fa-trash align-middle"></i>
-                </button>
+                <DeleteButton id={todo.id} />
               </div>
             </div>
           ))}

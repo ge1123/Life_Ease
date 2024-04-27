@@ -2,6 +2,7 @@
 import React, { useState, useEffect, FormEvent } from 'react';
 import AddItem from '@/todolist/addItem';
 import TodoItem from '@/todolist/todoItem';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function TodoList() {
   const [showModal, setShowModal] = useState(false);
@@ -14,12 +15,16 @@ function TodoList() {
     <>
       <div className="flex items-center justify-center space-x-4">
         <h1 className="text-4xl mt-4">
-          Todo List
+          待辦事項
         </h1>
-        <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded mt-4"
+        <button className="bg-blue-600 text-white font-bold py-1 px-2 rounded mt-4"
           onClick={toggleModal}>
-          +
+          <i className="fas fa-plus"></i>
         </button>
+        <input
+          type="text"
+          placeholder="請輸入內容"
+        />
         {showModal && (
           <AddItem toggleModal={toggleModal} />
         )}
