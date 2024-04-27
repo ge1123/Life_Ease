@@ -1,10 +1,11 @@
 "use client"; // This is a client component 👈🏽
+
 import React, { useState, useEffect, FormEvent } from 'react';
 import AddItem from '@/todolist/addItem';
 import TodoItem from '@/todolist/todoItem';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-function TodoList() {
+function TodoList(): JSX.Element {
 
   // 顯示/隱藏 新增事項視窗 
   const [showModal, setShowModal] = useState(false);
@@ -15,11 +16,12 @@ function TodoList() {
   // 是否載入
   const [loading, setLoading] = useState<boolean>(true);
 
-  useEffect(() => {
+  useEffect((): void => {
     fetchTodos();
   }, []);
 
-  const fetchTodos = async () => {
+  // 取得待辦事項
+  const fetchTodos = async (): Promise<void> => {
     const response = await fetch('https://localhost:7082/api/lifemanage/todo', {
       method: 'GET',
       headers: {
@@ -34,9 +36,8 @@ function TodoList() {
     setLoading(false);
   };
 
-
-
-  async function handleAddTodo(todoItem: TodoList) {
+  // 新增事項
+  async function handleAddTodo(todoItem: TodoList): Promise<void> {
     try {
       const response = await fetch(`https://localhost:7082/api/lifemanage/todo`, {
         method: 'POST',
@@ -51,9 +52,30 @@ function TodoList() {
 
       if (response.ok) {
         console.log('Add success');
-        fetchTodos();  // 重新获取待办事项列表
+        fetchTodos();  // 重新取得待辦事項
       } else {
         throw new Error('Failed to add');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
+  // 刪除事項
+  async function handleDeleteTodo(id: number): Promise<void> {
+    try {
+      const response = await fetch(`https://localhost:7082/api/lifemanage/todo/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        console.log('Delete success');
+        fetchTodos();  // 重新取得待辦事項
+      } else {
+        throw new Error('Failed to delete');
       }
     } catch (error) {
       console.error('Error:', error);
@@ -64,6 +86,8 @@ function TodoList() {
   const toggleModal = (): void => {
     setShowModal(!showModal);
   };
+
+
 
   return (
     <>
@@ -93,6 +117,7 @@ function TodoList() {
         <TodoItem
           todos={todos}
           loading={loading}
+          handleDelete={handleDeleteTodo}
         />
       </div>
     </>

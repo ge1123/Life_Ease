@@ -17,6 +17,7 @@ interface TodoItem {
 interface TodoItemProps {
     loading: boolean;
     todos: TodoItem[];
+    handleDelete: (id: number) => void;
 }
 
 interface ApiResponse {
@@ -31,4 +32,9 @@ interface ApiResponse {
 interface AddItemProps {
     toggleModal: () => void;
     addTodo: (todoItem: TodoList) => void;
+}
+
+interface DeleteButtonProps {
+    id: number;
+    handleDelete: (id: number) => void;
 }

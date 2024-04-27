@@ -1,3 +1,4 @@
+"use client"; // This is a client component 👈🏽
 import React, { useState, useEffect, FormEvent } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
