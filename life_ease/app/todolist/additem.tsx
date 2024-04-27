@@ -1,34 +1,7 @@
 import React, { useState, useEffect, FormEvent } from 'react';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-interface AddItemProps {
-    toggleModal: () => void;
-}
-
-async function addTodo(todoItem: TodoList) {
-    try {
-        const response = await fetch(`https://localhost:7082/api/lifemanage/todo`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                ...todoItem,
-                dueDate: todoItem.dueDate.toISOString()
-            })
-        });
-
-        if (response.ok) {
-            console.log('Add success');
-        } else {
-            throw new Error('Failed to add');
-        }
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
-
-const AddItem = ({ toggleModal }: AddItemProps) => {
+const AddItem = ({ toggleModal, addTodo }: AddItemProps) => {
 
     const [todo, setTodo] = useState<TodoList>({
         id: 0,

@@ -2,49 +2,7 @@ import { useEffect, useState } from 'react';
 import DeleteButton from '@/todolist/deleteButton';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-interface TodoItem {
-  id: number;
-  title: string;
-  description: string;
-  isCompleted: boolean;
-  dueTime: string | null;
-}
-
-interface ApiResponse {
-  code: number;
-  status: string;
-  data: {
-    items: TodoItem[];
-    total: number;
-  };
-}
-
-export default function TodoItem() {
-  const [todos, setTodos] = useState<TodoItem[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const fetchTodos = async () => {
-      const response = await fetch('https://localhost:7082/api/lifemanage/todo', {
-        method: 'GET',
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-      if (!response.ok) {
-        throw new Error('Failed to fetch');
-      }
-      const result: ApiResponse = await response.json();
-      setTodos(result.data.items);
-      setLoading(false);
-    };
-
-    fetchTodos().catch(error => {
-      console.error('Error fetching todos:', error);
-      setLoading(false);
-    });
-  }, []);
-
+export default function TodoItem({loading, todos}: TodoItemProps) {
 
   return (
     <div>
