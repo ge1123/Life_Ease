@@ -17,7 +17,7 @@ interface TodoItem {
 interface TodoItemProps {
     loading: boolean;
     todos: TodoItem[];
-    handleDelete: (id: number) => void;
+    handleDelete: HandleDeleteTodo;
 }
 
 interface ApiResponse {
@@ -36,5 +36,9 @@ interface AddItemProps {
 
 interface DeleteButtonProps {
     id: number;
-    handleDelete: (id: number) => void;
+    handleDelete: HandleDeleteTodo;
+}
+
+interface HandleDeleteTodo {
+    (id: number): Promise<void>;
 }

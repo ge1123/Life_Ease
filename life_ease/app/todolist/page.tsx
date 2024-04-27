@@ -62,7 +62,7 @@ function TodoList(): JSX.Element {
   }
 
   // 刪除事項
-  async function handleDeleteTodo(id: number): Promise<void> {
+  const handleDeleteTodo: HandleDeleteTodo = async (id: number): Promise<void> => {
     try {
       const response = await fetch(`https://localhost:7082/api/lifemanage/todo/${id}`, {
         method: 'DELETE',
