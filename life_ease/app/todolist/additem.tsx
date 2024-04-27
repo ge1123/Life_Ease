@@ -1,3 +1,5 @@
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 interface AddItemProps {
     toggleModal: () => void;
 }
@@ -10,7 +12,7 @@ const AddItem = ({ toggleModal }: AddItemProps) => {
                 <button
                     className="absolute top-3 right-3 bg-transparent text-black-500 font-bold p-2 rounded-full hover:bg-gray-100"
                     onClick={toggleModal}>
-                    X
+                    <i className="fas fa-times"></i>
                 </button>
                 <div className="flex flex-col space-y-4">
                     <input className="border border-gray-300 p-2 rounded-md"
@@ -29,7 +31,7 @@ const AddItem = ({ toggleModal }: AddItemProps) => {
                 <button
                     className="bg-blue-500 text-white font-bold py-2 px-4 mt-4 rounded"
                     onClick={toggleModal}>
-                    Save
+                    <i className="fas fa-save"></i>
                 </button>
             </div>
         </div>
