@@ -3,6 +3,7 @@
 import React, { useState, useEffect, FormEvent } from 'react';
 import AddItem from '@/todolist/components/addItem';
 import TodoItem from '@/todolist/components/todoItem';
+import { fetchTodos } from '@/todolist/services/api';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function TodoList(): JSX.Element {
@@ -17,75 +18,59 @@ function TodoList(): JSX.Element {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect((): void => {
-    fetchTodos();
+    fetch();
   }, []);
 
   // 取得待辦事項
-  const fetchTodos: FetchTodos = async (): Promise<void> => {
-    const response = await fetch('https://localhost:7082/api/lifemanage/todo', {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json'
-      }
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch');
-    }
-    const result: ApiResponse<TodoItem> = await response.json();
-
-    if (result.code !== 200) {
-      throw new Error(result.status);
-    }
-
-    setTodos(result.data.items);
+  const fetch: FetchTodo = async (): Promise<void> => {
+    const result: TodoItem[] = await fetchTodos();
+    setTodos(result);
     setLoading(false);
-  };
-
+  }
   // 新增事項
   const handleAddTodo: HandleAddTodo = async (todoItem: TodoList): Promise<void> => {
-    try {
-      const response = await fetch(`https://localhost:7082/api/lifemanage/todo`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          ...todoItem,
-          dueDate: todoItem.dueDate.toISOString()
-        })
-      });
+    // try {
+    //   const response = await fetch(`https://localhost:7082/api/lifemanage/todo`, {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({
+    //       ...todoItem,
+    //       dueDate: todoItem.dueDate.toISOString()
+    //     })
+    //   });
 
-      if (response.ok) {
-        console.log('Add success');
-        fetchTodos();  // 重新取得待辦事項
-      } else {
-        throw new Error('Failed to add');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
+    //   if (response.ok) {
+    //     console.log('Add success');
+    //     fetchTodos();  // 重新取得待辦事項
+    //   } else {
+    //     throw new Error('Failed to add');
+    //   }
+    // } catch (error) {
+    //   console.error('Error:', error);
+    // }
   }
 
   // 刪除事項
   const handleDeleteTodo: HandleDeleteTodo = async (id: number): Promise<void> => {
-    try {
-      const response = await fetch(`https://localhost:7082/api/lifemanage/todo/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
+    // try {
+    //   const response = await fetch(`https://localhost:7082/api/lifemanage/todo/${id}`, {
+    //     method: 'DELETE',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     }
+    //   });
 
-      if (response.ok) {
-        console.log('Delete success');
-        fetchTodos();  // 重新取得待辦事項
-      } else {
-        throw new Error('Failed to delete');
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
+    //   if (response.ok) {
+    //     console.log('Delete success');
+    //     fetchTodos();  // 重新取得待辦事項
+    //   } else {
+    //     throw new Error('Failed to delete');
+    //   }
+    // } catch (error) {
+    //   console.error('Error:', error);
+    // }
   }
 
   // 開啟/關閉 新增事項視窗觸發器
