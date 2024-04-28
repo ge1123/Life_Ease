@@ -30,8 +30,6 @@ type HandleAddTodo = (todoItem: TodoList) => Promise<void>;
 
 type ToggleModal = () => void;
 
-type FetchTodos = () => Promise<TodoList[]>;
-
 type AddTodo = (todoList: TodoList) => Promise<void>;
 
 type DeleteTodo = (id: number) => Promise<void>;
