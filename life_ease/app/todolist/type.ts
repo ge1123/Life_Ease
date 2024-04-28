@@ -9,7 +9,17 @@ interface TodoList {
 interface TodoItemProps {
     loading: boolean;
     todos: TodoList[];
-    handleDelete: DeleteTodoHandler;
+    handleDelete: DeleteTodo;
+    handleUpdate: UpdateTodo;
+}
+
+interface InputFieldProps {
+    label: string;
+    type: string;
+    name: string;
+    placeholder: string;
+    value: string;
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 interface AddItemProps {
@@ -19,19 +29,26 @@ interface AddItemProps {
 
 interface DeleteButtonProps {
     id: number;
-    handleDelete: DeleteTodoHandler;
+    handleDelete: DeleteTodo;
+}
+
+interface UpdateButtonProps {
+    id: number;
+    handleUpdate: UpdateTodo;
 }
 
 type SubmitHandler = () => void;
 
-type DeleteTodoHandler = (id: number) => Promise<void>;
+// type DeleteTodoHandler = (id: number) => Promise<void>;
 
 type HandleAddTodo = (todoItem: TodoList) => Promise<void>;
 
 type ToggleModal = () => void;
 
-type AddTodo = (todoList: TodoList) => Promise<void>;
+type CreateTodo = (todoList: TodoList) => Promise<void>;
 
 type DeleteTodo = (id: number) => Promise<void>;
+
+type UpdateTodo = (todoList: TodoList) => Promise<void>;
 
 type LoadTodos = () => Promise<void>;

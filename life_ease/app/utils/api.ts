@@ -22,7 +22,7 @@ const fetchData: FetchData = async<T>(url: string, config: RequestInit): Promise
     return result.data.items;
 }
 
-const postData: PostData = async <T>(url: string, data: T, config?: RequestInit): Promise<T> => {
+const postData: CreateData = async <T>(url: string, data: T, config?: RequestInit): Promise<T> => {
     try {
         const finalConfig = {
             method: 'POST',
@@ -69,4 +69,28 @@ const deleteData: DeleteData = async (url: string, config?: RequestInit): Promis
     }
 }
 
-export { fetchData, postData, deleteData };
+const updateData: UpdateData = async (url: string, data: any, config?: RequestInit): Promise<void> => {
+    try {
+        const finalConfig = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                ...(config?.headers || {}),
+            },
+            body: JSON.stringify(data),
+            ...config,
+        };
+
+        const response = await fetch(url, finalConfig);
+
+        if (!response.ok) {
+            throw new Error(`Failed to PUT: ${response.status} ${response.statusText}`);
+        }
+    } catch (error) {
+        console.error('Error in PUT request:', error);
+        throw error;
+    }
+}
+
+
+export { fetchData, postData, deleteData, updateData };

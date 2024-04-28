@@ -1,5 +1,6 @@
 "use client"; // This is a client component 👈🏽
 import React, { useState, useEffect, FormEvent } from 'react';
+import InputField from './inputField';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const AddItem = ({ toggleModal, addTodo }: AddItemProps) => {
@@ -39,42 +40,30 @@ const AddItem = ({ toggleModal, addTodo }: AddItemProps) => {
                 </button>
                 <div
                     className="flex flex-col space-y-4">
-                    <label
-                        className="block text-lg font-semibold text-gray-700 mb-2">
-                        標題
-                        <input
-                            className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
-                            type="text"
-                            placeholder="請輸入標題"
-                            name="title"
-                            value={todo.title}
-                            onChange={handleChange}
-                        />
-                    </label>
-                    <label
-                        className="block text-lg font-semibold text-gray-700 mb-2">
-                        內容
-                        <input
-                            className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
-                            type="text"
-                            placeholder="請輸入內容"
-                            name="description"
-                            value={todo.description}
-                            onChange={handleChange}
-                        />
-                    </label>
-                    <label
-                        className="block text-lg font-semibold text-gray-700 mb-2">
-                        到期日
-                        <input
-                            className="mt-1 p-2 w-full border border-gray-300 rounded-md focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50"
-                            type="date"
-                            placeholder="請輸入時間"
-                            name="dueDate"
-                            value={todo.dueDate instanceof Date ? todo.dueDate.toISOString().substring(0, 10) : ''}
-                            onChange={handleChange}
-                        />
-                    </label>
+                    <InputField
+                        label="標題"
+                        type="text"
+                        name="title"
+                        placeholder="請輸入標題"
+                        value={todo.title}
+                        onChange={handleChange}
+                    />
+                    <InputField
+                        label="內容"
+                        type="text"
+                        name="description"
+                        placeholder="請輸入內容"
+                        value={todo.description}
+                        onChange={handleChange}
+                    />
+                    <InputField
+                        label="到期日"
+                        type="date"
+                        name="dueDate"
+                        placeholder="請輸入時間"
+                        value={todo.dueDate.toISOString()}
+                        onChange={handleChange}
+                    />
                 </div>
                 <button
                     className="bg-blue-500 text-white font-bold py-2 px-4 mt-4 rounded"

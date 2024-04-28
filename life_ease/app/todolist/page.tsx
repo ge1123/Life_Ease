@@ -7,7 +7,7 @@ import useTodos from '@/todolist/services/api';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function TodoList(): JSX.Element {
-  const { todos, loading, addTodo, deleteTodo } = useTodos();
+  const { todos, loading, addTodo, deleteTodo, updateTodo } = useTodos();
 
   // 顯示/隱藏 新增事項視窗 
   const [showModal, setShowModal] = useState(false);
@@ -46,6 +46,7 @@ function TodoList(): JSX.Element {
           todos={todos}
           loading={loading}
           handleDelete={deleteTodo}
+          handleUpdate={updateTodo}
         />
       </div>
     </>

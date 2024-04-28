@@ -1,4 +1,4 @@
-import { deleteData, fetchData, postData } from '@/utils/api';
+import { deleteData, fetchData, postData, updateData } from '@/utils/api';
 import { useState, useEffect } from 'react';
 
 const url: string = "https://localhost:7082/api/lifemanage/todo";
@@ -28,7 +28,7 @@ const useTodos = () => {
         setLoading(false);
     }
 
-    const addTodo: AddTodo = async (todoList: TodoList): Promise<void> => {
+    const createTodo: CreateTodo = async (todoList: TodoList): Promise<void> => {
         const config: RequestInit = {
             method: 'POST',
             headers: {
@@ -56,7 +56,21 @@ const useTodos = () => {
         await loadTodos();
     }
 
-    return { todos, loading, addTodo, deleteTodo };
+    const updateTodo: UpdateTodo = async (todoList: TodoList): Promise<void> => {
+        const config: RequestInit = {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                ...todoList
+            })
+        };
+        await updateData(`${url}/${todoList.id}`, todoList, config)
+        await loadTodos();
+    }
+
+    return { todos, loading, addTodo: createTodo, deleteTodo, updateTodo };
 };
 
 export default useTodos;
