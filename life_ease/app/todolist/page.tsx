@@ -1,52 +1,21 @@
 "use client"; // This is a client component 👈🏽
 
-import React, { useState, useEffect, FormEvent } from 'react';
+import React, { useState } from 'react';
 import AddItem from '@/todolist/components/addItem';
 import TodoItem from '@/todolist/components/todoItem';
-import { fetchTodos, addTodo, deleteTodo } from '@/todolist/services/api';
+import useTodos from '@/todolist/services/api';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function TodoList(): JSX.Element {
+  const { todos, loading, addTodo, deleteTodo } = useTodos();
 
   // 顯示/隱藏 新增事項視窗 
   const [showModal, setShowModal] = useState(false);
-
-  // 待辦事項資料
-  const [todos, setTodos] = useState<TodoList[]>([]);
-
-  // 是否載入
-  const [loading, setLoading] = useState<boolean>(true);
-
-  useEffect((): void => {
-    loadTodos();
-  }, []);
-
-  // 取得待辦事項
-  const loadTodos: LoadTodos = async (): Promise<void> => {
-    const result: TodoList[] = await fetchTodos();
-    console.log(result)
-    setTodos(result);
-    setLoading(false);
-  }
-
-  // 新增事項
-  const submitTodoAndUpdateView = async (todos: TodoList): Promise<void> => {
-    await addTodo(todos);
-    await loadTodos();
-  }
-
-  // 刪除事項
-  const deleteTodoAndUpdateView = async (id: number): Promise<void> => {
-    await deleteTodo(id);
-    await loadTodos();
-  }
 
   // 開啟/關閉 新增事項視窗觸發器
   const toggleModal: ToggleModal = (): void => {
     setShowModal(!showModal);
   };
-
-
 
   return (
     <>
@@ -68,7 +37,7 @@ function TodoList(): JSX.Element {
           showModal &&
           <AddItem
             toggleModal={toggleModal}
-            addTodo={submitTodoAndUpdateView}
+            addTodo={addTodo}
           />
         }
       </div>
@@ -76,7 +45,7 @@ function TodoList(): JSX.Element {
         <TodoItem
           todos={todos}
           loading={loading}
-          handleDelete={deleteTodoAndUpdateView}
+          handleDelete={deleteTodo}
         />
       </div>
     </>
