@@ -3,7 +3,7 @@ import UpdateButton from '@/todolist/components/updateButton';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export default function TodoItem({ loading, todos, handleDelete, handleUpdate }: TodoItemProps) {
-
+ 
   return (
     <div>
       {loading ? (
@@ -15,8 +15,8 @@ export default function TodoItem({ loading, todos, handleDelete, handleUpdate }:
               <span className="font-semibold">{todo.title}</span>
               <div className="ml-auto flex gap-2">
                 <UpdateButton
-                  id = {todo.id}
-                  handleUpdate = {handleUpdate}
+                  id={todo.id}
+                  handleUpdate={handleUpdate}
                 />
                 <DeleteButton
                   id={todo.id}
@@ -25,6 +25,7 @@ export default function TodoItem({ loading, todos, handleDelete, handleUpdate }:
               </div>
             </div>
           ))}
+
         </div>
       )}
     </div>

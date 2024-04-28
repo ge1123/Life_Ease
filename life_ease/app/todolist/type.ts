@@ -27,6 +27,12 @@ interface AddItemProps {
     addTodo: HandleAddTodo;
 }
 
+interface UpdateItemProps {
+    toggleModal: () => void;
+    handleUpdate: UpdateTodo;
+    id: number;
+}
+
 interface DeleteButtonProps {
     id: number;
     handleDelete: DeleteTodo;
@@ -38,8 +44,6 @@ interface UpdateButtonProps {
 }
 
 type SubmitHandler = () => void;
-
-// type DeleteTodoHandler = (id: number) => Promise<void>;
 
 type HandleAddTodo = (todoItem: TodoList) => Promise<void>;
 
