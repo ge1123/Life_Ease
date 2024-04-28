@@ -12,18 +12,18 @@ function TodoList(): JSX.Element {
   const [showModal, setShowModal] = useState(false);
 
   // 待辦事項資料
-  const [todos, setTodos] = useState<TodoItem[]>([]);
+  const [todos, setTodos] = useState<TodoList[]>([]);
 
   // 是否載入
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect((): void => {
-    fetch();
+    loadTodos();
   }, []);
 
   // 取得待辦事項
-  const fetch: FetchTodo = async (): Promise<void> => {
-    const result: TodoItem[] = await fetchTodos();
+  const loadTodos: LoadTodos = async (): Promise<void> => {
+    const result: TodoList[] = await fetchTodos();
     setTodos(result);
     setLoading(false);
   }

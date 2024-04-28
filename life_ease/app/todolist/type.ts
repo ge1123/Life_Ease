@@ -16,7 +16,7 @@ interface TodoItem {
 
 interface TodoItemProps {
     loading: boolean;
-    todos: TodoItem[];
+    todos: TodoList[];
     handleDelete: HandleDeleteTodo;
 }
 
@@ -36,6 +36,6 @@ type HandleAddTodo = (todoItem: TodoList) => Promise<void>;
 
 type ToggleModal = () => void;
 
-type FetchTodos = () => Promise<TodoItem[]>;
+type FetchTodos = () => Promise<TodoList[]>;
 
-type FetchTodo = () => Promise<void>;
+type LoadTodos = () => Promise<void>;

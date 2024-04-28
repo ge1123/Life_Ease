@@ -1,7 +1,7 @@
 import { fetchData } from '@/utils/api';
 
 
-const fetchTodos: FetchTodos = async (): Promise<TodoItem[]> => {
+const fetchTodos: FetchTodos = async (): Promise<TodoList[]> => {
 
     const url: string = "https://localhost:7082/api/lifemanage/todo";
     const config: RequestInit = {
@@ -11,7 +11,7 @@ const fetchTodos: FetchTodos = async (): Promise<TodoItem[]> => {
         }
     };
 
-    const result: TodoItem[] = await fetchData(url, config)
+    const result: TodoList[] = await fetchData(url, config)
     return result;
 }
 
