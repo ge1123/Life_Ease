@@ -20,7 +20,7 @@ const AddItem = ({ toggleModal, addTodo }: AddItemProps) => {
         }));
     };
 
-    const handleSubmit = () => {
+    const handleSubmit: SubmitHandler = () => {
         addTodo(todo); // 新增事項 api
         toggleModal(); // 關閉新增事項視窗
     };
@@ -29,7 +29,7 @@ const AddItem = ({ toggleModal, addTodo }: AddItemProps) => {
         <div className="fixed inset-0 bg-black bg-opacity-50 z-40 flex justify-center items-center">
             <div className="relative bg-white p-5 border border-gray-300 shadow-lg rounded-lg">
                 <h1
-                    className="text-2xl font-bold text-gray-700 mb-4">                    
+                    className="text-2xl font-bold text-gray-700 mb-4">
                     新增事項
                 </h1>
                 <button

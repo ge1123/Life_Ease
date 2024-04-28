@@ -3,7 +3,7 @@
 import React, { useState, useEffect, FormEvent } from 'react';
 import AddItem from '@/todolist/components/addItem';
 import TodoItem from '@/todolist/components/todoItem';
-import { fetchTodos } from '@/todolist/services/api';
+import { fetchTodos, addTodo, deleteTodo } from '@/todolist/services/api';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function TodoList(): JSX.Element {
@@ -24,53 +24,21 @@ function TodoList(): JSX.Element {
   // 取得待辦事項
   const loadTodos: LoadTodos = async (): Promise<void> => {
     const result: TodoList[] = await fetchTodos();
+    console.log(result)
     setTodos(result);
     setLoading(false);
   }
-  // 新增事項
-  const handleAddTodo: HandleAddTodo = async (todoItem: TodoList): Promise<void> => {
-    // try {
-    //   const response = await fetch(`https://localhost:7082/api/lifemanage/todo`, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
-    //       ...todoItem,
-    //       dueDate: todoItem.dueDate.toISOString()
-    //     })
-    //   });
 
-    //   if (response.ok) {
-    //     console.log('Add success');
-    //     fetchTodos();  // 重新取得待辦事項
-    //   } else {
-    //     throw new Error('Failed to add');
-    //   }
-    // } catch (error) {
-    //   console.error('Error:', error);
-    // }
+  // 新增事項
+  const submitTodoAndUpdateView = async (todos: TodoList): Promise<void> => {
+    await addTodo(todos);
+    await loadTodos();
   }
 
   // 刪除事項
-  const handleDeleteTodo: HandleDeleteTodo = async (id: number): Promise<void> => {
-    // try {
-    //   const response = await fetch(`https://localhost:7082/api/lifemanage/todo/${id}`, {
-    //     method: 'DELETE',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     }
-    //   });
-
-    //   if (response.ok) {
-    //     console.log('Delete success');
-    //     fetchTodos();  // 重新取得待辦事項
-    //   } else {
-    //     throw new Error('Failed to delete');
-    //   }
-    // } catch (error) {
-    //   console.error('Error:', error);
-    // }
+  const deleteTodoAndUpdateView = async (id: number): Promise<void> => {
+    await deleteTodo(id);
+    await loadTodos();
   }
 
   // 開啟/關閉 新增事項視窗觸發器
@@ -100,7 +68,7 @@ function TodoList(): JSX.Element {
           showModal &&
           <AddItem
             toggleModal={toggleModal}
-            addTodo={handleAddTodo}
+            addTodo={submitTodoAndUpdateView}
           />
         }
       </div>
@@ -108,7 +76,7 @@ function TodoList(): JSX.Element {
         <TodoItem
           todos={todos}
           loading={loading}
-          handleDelete={handleDeleteTodo}
+          handleDelete={deleteTodoAndUpdateView}
         />
       </div>
     </>
