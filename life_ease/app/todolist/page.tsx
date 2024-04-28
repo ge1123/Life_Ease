@@ -1,8 +1,8 @@
 "use client"; // This is a client component 👈🏽
 
 import React, { useState, useEffect, FormEvent } from 'react';
-import AddItem from '@/todolist/addItem';
-import TodoItem from '@/todolist/todoItem';
+import AddItem from '@/todolist/components/addItem';
+import TodoItem from '@/todolist/components/todoItem';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function TodoList(): JSX.Element {
@@ -21,23 +21,29 @@ function TodoList(): JSX.Element {
   }, []);
 
   // 取得待辦事項
-  const fetchTodos = async (): Promise<void> => {
+  const fetchTodos: FetchTodos = async (): Promise<void> => {
     const response = await fetch('https://localhost:7082/api/lifemanage/todo', {
       method: 'GET',
       headers: {
         'Accept': 'application/json'
       }
     });
+
     if (!response.ok) {
       throw new Error('Failed to fetch');
     }
-    const result: ApiResponse = await response.json();
+    const result: ApiResponse<TodoItem> = await response.json();
+
+    if (result.code !== 200) {
+      throw new Error(result.status);
+    }
+
     setTodos(result.data.items);
     setLoading(false);
   };
 
   // 新增事項
-  async function handleAddTodo(todoItem: TodoList): Promise<void> {
+  const handleAddTodo: HandleAddTodo = async (todoItem: TodoList): Promise<void> => {
     try {
       const response = await fetch(`https://localhost:7082/api/lifemanage/todo`, {
         method: 'POST',
@@ -83,7 +89,7 @@ function TodoList(): JSX.Element {
   }
 
   // 開啟/關閉 新增事項視窗觸發器
-  const toggleModal = (): void => {
+  const toggleModal: ToggleModal = (): void => {
     setShowModal(!showModal);
   };
 
