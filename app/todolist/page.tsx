@@ -73,10 +73,6 @@ function TodoList(): JSX.Element {
           handleUpdate={updateTodo}
         />
       </div>
-      <input
-        type="text"
-        placeholder="請輸入內容"
-      />
     </>
   );
 };
