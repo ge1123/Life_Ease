@@ -15,20 +15,34 @@ const useTodos = () => {
         loadTodos();
     }, []);
 
-    const loadTodos: LoadTodos = async (): Promise<void> => {
+    const loadTodos: LoadTodos = async (params: TodoQueryParams = {}): Promise<void> => {
+        const queryParams = new URLSearchParams();
+    
+        // 將參數添加到查詢字串中
+        Object.keys(params).forEach(key => {
+            const value = params[key as keyof TodoQueryParams];
+            if (value != null) { // 檢查 undefined 和 null
+                queryParams.append(key, value.toString());
+            }
+        });
+    
+        const query = queryParams.toString();
+        const urlWithParams = query ? `${url}?${query}` : url;
+    
         const config: RequestInit = {
             method: 'GET',
             headers: {
                 'Accept': 'application/json'
             }
         };
-
-        const result: TodoList[] = await fetchData(url, config)
+    
+        const result: TodoList[] = await fetchData(urlWithParams, config);
         setTodos(result);
         setLoading(false);
     }
+    
 
-    const createTodo: CreateTodo = async (todoList: TodoList): Promise<void> => {
+    const addTodo: CreateTodo = async (todoList: TodoList): Promise<void> => {
         const config: RequestInit = {
             method: 'POST',
             headers: {
@@ -70,7 +84,7 @@ const useTodos = () => {
         await loadTodos();
     }
 
-    return { todos, loading, addTodo: createTodo, deleteTodo, updateTodo };
+    return { todos, loading, addTodo, deleteTodo, updateTodo, loadTodos };
 };
 
 export default useTodos;

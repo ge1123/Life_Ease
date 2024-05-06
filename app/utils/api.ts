@@ -1,4 +1,4 @@
-const fetchData: FetchData = async<T>(url: string, config: RequestInit): Promise<T[]> => {
+const fetchData: FetchData = async<T>(url: string, config: RequestInit = {}): Promise<T[]> => {
     const response = await fetch(url, {
         ...config,
         headers: {

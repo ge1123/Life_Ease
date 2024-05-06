@@ -2,7 +2,7 @@ import DeleteButton from '@/todolist/components/DeleteButton';
 import UpdateButton from '@/todolist/components/UpdateButton';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-export default function TodoItem({ loading, handleSearch, handleDelete, handleUpdate }: TodoItemProps) {
+export default function TodoItem({ loading, todoList, handleDelete, handleUpdate }: TodoItemProps) {
 
   return (
     <div>
@@ -10,7 +10,7 @@ export default function TodoItem({ loading, handleSearch, handleDelete, handleUp
         <p>Loading...</p>
       ) : (
         <div>
-          {handleSearch.map(todo => (
+          {todoList.map(todo => (
             <div key={todo.id} className="bg-gray-100 p-4 my-2 rounded shadow flex items-center">
               <span className="font-semibold">{todo.title}</span>
               <div className="ml-auto flex gap-2">

@@ -6,9 +6,17 @@ interface TodoList {
     dueDate: Date;
 }
 
+interface TodoQueryParams {
+    id?: number;
+    title?: string;
+    description?: string;
+    isCompleted?: boolean;
+    dueDate?: Date;
+}
+
 interface TodoItemProps {
     loading: boolean;
-    handleSearch: TodoList[];
+    todoList: TodoList[];
     handleDelete: DeleteTodo;
     handleUpdate: UpdateTodo;
 }
@@ -55,4 +63,4 @@ type DeleteTodo = (id: number) => Promise<void>;
 
 type UpdateTodo = (todoList: TodoList) => Promise<void>;
 
-type LoadTodos = () => Promise<void>;
+type LoadTodos = (params?: TodoQueryParams) => Promise<void>;
