@@ -8,7 +8,7 @@ interface TodoList {
 
 interface TodoItemProps {
     loading: boolean;
-    todos: TodoList[];
+    handleSearch: TodoList[];
     handleDelete: DeleteTodo;
     handleUpdate: UpdateTodo;
 }
@@ -24,7 +24,7 @@ interface InputFieldProps {
 
 interface AddItemProps {
     toggleModal: () => void;
-    addTodo: HandleAddTodo;
+    handleAdd: HandleAddTodo;
 }
 
 interface UpdateItemProps {

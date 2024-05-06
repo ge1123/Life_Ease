@@ -1,9 +1,9 @@
 "use client"; // This is a client component 👈🏽
-import React, { useState, useEffect, FormEvent } from 'react';
+import React, { useState } from 'react';
 import InputField from './InputField';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-const AddItem = ({ toggleModal, addTodo }: AddItemProps) => {
+const AddItem = ({ toggleModal, handleAdd }: AddItemProps) => {
 
     const [todo, setTodo] = useState<TodoList>({
         id: 0,
@@ -22,7 +22,7 @@ const AddItem = ({ toggleModal, addTodo }: AddItemProps) => {
     };
 
     const handleSubmit: SubmitHandler = () => {
-        addTodo(todo); // 新增事項 api
+        handleAdd(todo); // 新增事項 api
         toggleModal(); // 關閉新增事項視窗
     };
 

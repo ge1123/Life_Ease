@@ -19,36 +19,42 @@ function TodoList(): JSX.Element {
 
   return (
     <>
-      <div className="flex items-center justify-center space-x-4">
-        <h1
-          className="text-4xl mt-4">
-          待辦事項
-        </h1>
-        <button
-          className="bg-blue-600 text-white font-bold py-1 px-2 rounded mt-4"
-          onClick={toggleModal}>
-          <i className="fas fa-plus"></i> {/* 新增 + */}
-        </button>
-        <input
-          type="text"
-          placeholder="請輸入內容"
-        />
+      <div className="flex flex-col items-center justify-center space-y-4">
+        <div className="flex items-center justify-center space-x-4">
+          <h1 className="text-4xl">
+            待辦事項
+          </h1>
+          <button
+            className="bg-blue-600 text-white font-bold py-1 px-2 rounded"
+            onClick={toggleModal}>
+            <i className="fas fa-plus"></i> {/* 新增 + */}
+          </button>
+        </div>
         {
           showModal &&
           <AddItem
             toggleModal={toggleModal}
-            addTodo={addTodo}
+            handleAdd={addTodo}
           />
         }
+        <input
+          type="text"
+          className="mt-4 p-2 rounded border border-gray-300"
+          placeholder="請輸入關鍵字進行搜尋"
+        />
       </div>
-      <div className="container mx-auto px-4 max-w-4xl">
+      <div className="container mx-auto px-4 max-w-xl">
         <TodoItem
-          todos={todos}
+          handleSearch={todos}
           loading={loading}
           handleDelete={deleteTodo}
           handleUpdate={updateTodo}
         />
       </div>
+      <input
+        type="text"
+        placeholder="請輸入內容"
+      />
     </>
   );
 };
