@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FormEvent } from 'react';
-import EditItem from '@/todolist/components/editItem';
+import EditItem from '@/todolist/components/EditItem';
 
 const UpdateButton = ({ id, handleUpdate }: UpdateButtonProps) => {
     // 顯示/隱藏 編輯事項視窗 

@@ -1,6 +1,6 @@
 "use client"; // This is a client component 👈🏽
 import React, { useState, useEffect, FormEvent } from 'react';
-import InputField from './inputField';
+import InputField from './InputField';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const AddItem = ({ toggleModal, addTodo }: AddItemProps) => {

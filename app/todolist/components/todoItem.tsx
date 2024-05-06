@@ -1,5 +1,5 @@
-import DeleteButton from '@/todolist/components/deleteButton';
-import UpdateButton from '@/todolist/components/updateButton';
+import DeleteButton from '@/todolist/components/DeleteButton';
+import UpdateButton from '@/todolist/components/UpdateButton';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export default function TodoItem({ loading, todos, handleDelete, handleUpdate }: TodoItemProps) {

@@ -1,8 +1,8 @@
 "use client"; // This is a client component 👈🏽
 
 import React, { useState } from 'react';
-import AddItem from '@/todolist/components/addItem';
-import TodoItem from '@/todolist/components/todoItem';
+import AddItem from '@/todolist/components/AddItem';
+import TodoItem from '@/todolist/components/TodoItem';
 import useTodos from '@/todolist/services/api';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
