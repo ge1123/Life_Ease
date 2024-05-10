@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import AddItem from '@/todolist/components/AddItem';
 import TodoItem from '@/todolist/components/TodoItem';
 import useTodos from '@/todolist/services/api';
+import MainLayout from '../layout/MainLayout';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function TodoList(): JSX.Element {
@@ -31,7 +32,7 @@ function TodoList(): JSX.Element {
   };
 
   return (
-    <>
+    <MainLayout>
       <div className="flex flex-col items-center justify-center space-y-4">
         <div className="flex items-center justify-center space-x-4 mt-4">
           <h1 className="text-4xl">
@@ -73,7 +74,7 @@ function TodoList(): JSX.Element {
           handleUpdate={updateTodo}
         />
       </div>
-    </>
+    </MainLayout>
   );
 };
 
