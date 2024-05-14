@@ -1,4 +1,4 @@
-const fetchData: FetchData = async<T>(url: string, config: RequestInit = {}): Promise<T[]> => {
+const fetchPagedData: FetchData = async<T>(url: string, config: RequestInit = {}): Promise<T[]> => {
     const response = await fetch(url, {
         ...config,
         headers: {
@@ -12,14 +12,40 @@ const fetchData: FetchData = async<T>(url: string, config: RequestInit = {}): Pr
         throw new Error('Failed to fetch');
     }
 
-    const result: ApiResponse<T> = await response.json();
+    const result: PagedApiResponse<T> = await response.json();
 
     // api
     if (result.code !== 200) {
         throw new Error(result.status);
     }
 
+    // 分頁跟全撈的資料結構不同
+    if (!result.data.items) {
+        return result.data.items;
+    }
     return result.data.items;
+}
+
+const fetchListData: FetchData = async<T>(url: string, config: RequestInit = {}): Promise<T[]> => {
+    const response = await fetch(url, {
+        ...config,
+        headers: {
+            'Accept': 'application/json',
+            ...config.headers,
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to fetch');
+    }
+
+    const result: ListApiResponse<T> = await response.json();
+
+    if (result.code !== 200) {
+        throw new Error(result.status);
+    }
+
+    return result.data;
 }
 
 const postData: CreateData = async <T>(url: string, data: T, config?: RequestInit): Promise<T> => {
@@ -93,4 +119,4 @@ const updateData: UpdateData = async (url: string, data: any, config?: RequestIn
 }
 
 
-export { fetchData, postData, deleteData, updateData };
+export { fetchPagedData as fetchData, postData, deleteData, updateData };
