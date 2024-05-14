@@ -1,4 +1,4 @@
-import { deleteData, fetchData, postData, updateData } from '@/utils/api';
+import { deleteData, fetchPagedData, postData, updateData } from '@/utils/api';
 import { useState, useEffect } from 'react';
 
 const url: string = "https://localhost:7082/api/lifemanage/todo";
@@ -36,7 +36,7 @@ const useTodos = () => {
             }
         };
     
-        const result: TodoList[] = await fetchData(urlWithParams, config);
+        const result: TodoList[] = await fetchPagedData(urlWithParams, config);
         setTodos(result);
         setLoading(false);
     }

@@ -119,4 +119,4 @@ const updateData: UpdateData = async (url: string, data: any, config?: RequestIn
 }
 
 
-export { fetchPagedData as fetchData, postData, deleteData, updateData };
+export { fetchPagedData, postData, deleteData, updateData, fetchListData };
