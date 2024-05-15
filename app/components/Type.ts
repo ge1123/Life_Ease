@@ -8,5 +8,6 @@ interface SidebarMenu {
     permission: string;
     description: string;
     children: SidebarMenu[];
+    isExpanded?: boolean; // Add this property to track expanded state
 }
 
