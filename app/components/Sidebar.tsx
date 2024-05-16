@@ -73,7 +73,11 @@ function Sidebar() {
 
     return (
         <aside className="w-64 h-full flex flex-col bg-stone-800 text-white p-5">
-            <h2 className="text-lg font-bold uppercase mb-5">Menu</h2>
+            <Link href={"http://localhost:3000/"}>
+                <button className="text-lg font-bold  mb-7">
+                    Home
+                </button>
+            </Link>
             {renderMenuItems(menus, toggleMenu)}
         </aside>
     );
