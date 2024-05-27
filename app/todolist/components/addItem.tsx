@@ -26,6 +26,11 @@ const AddItem = ({ toggleModal, handleAdd }: AddItemProps) => {
         toggleModal(); // 關閉新增事項視窗
     };
 
+    // 格式化日期為 YYYY-MM-DD
+    const formatDate = (date: Date): string => {
+        return date.toISOString().split('T')[0];
+    };
+
     return (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-40 flex justify-center items-center">
             <div className="relative bg-white p-5 border border-gray-300 shadow-lg rounded-lg">
@@ -61,7 +66,7 @@ const AddItem = ({ toggleModal, handleAdd }: AddItemProps) => {
                         type="date"
                         name="dueDate"
                         placeholder="請輸入時間"
-                        value={todo.dueDate.toISOString()}
+                        value={formatDate(todo.dueDate)}
                         onChange={handleChange}
                     />
                 </div>
