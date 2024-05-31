@@ -2,7 +2,14 @@ import DeleteButton from '@/todolist/components/DeleteButton';
 import UpdateButton from '@/todolist/components/UpdateButton';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-export default function TodoItem({ loading, todoList, handleDelete, handleUpdate }: TodoItemProps) {
+type TodoItemProps = {
+  loading: boolean;
+  todoList: TodoList[];
+  handleDelete: DeleteTodo;
+  handleUpdate: UpdateTodo;
+}
+
+const TodoItem: React.FC<TodoItemProps> = ({ loading, todoList, handleDelete, handleUpdate }) => {
 
   return (
     <div>
@@ -31,3 +38,6 @@ export default function TodoItem({ loading, todoList, handleDelete, handleUpdate
     </div>
   );
 }
+
+
+export default TodoItem;

@@ -1,8 +1,15 @@
 import React, { useState, useEffect, FormEvent } from 'react';
-import InputField from './InputField';
+import InputField from '@/todolist/components/InputField';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-const EditItem = ({ toggleModal, handleUpdate, id }: UpdateItemProps) => {
+interface EditItemProps {
+    toggleModal: () => void;
+    handleUpdate: UpdateTodo;
+    id: number;
+}
+type HandleChange = (e: React.ChangeEvent<HTMLInputElement>) => void;
+
+const EditItem: React.FC<EditItemProps> = ({ toggleModal, handleUpdate, id }) => {
 
     const [todo, setTodo] = useState<TodoList>({
         id: id,
@@ -12,7 +19,7 @@ const EditItem = ({ toggleModal, handleUpdate, id }: UpdateItemProps) => {
         dueDate: new Date()
     });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange: HandleChange = (e) => {
         const { name, value, type } = e.target;
         setTodo(prevTodo => ({
             ...prevTodo,

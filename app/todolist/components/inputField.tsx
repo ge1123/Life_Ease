@@ -1,5 +1,14 @@
 import React from 'react';
 
+interface InputFieldProps {
+    label: string;
+    type: string;
+    name: string;
+    placeholder: string;
+    value: string;
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
 const InputField: React.FC<InputFieldProps> = ({ label, type, name, placeholder, value, onChange }) => {
     return (
         <label className="block text-lg font-semibold text-gray-700 mb-2">
