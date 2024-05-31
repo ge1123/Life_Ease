@@ -1,9 +1,17 @@
 "use client"; // This is a client component 👈🏽
 import React, { useState } from 'react';
-import InputField from './InputField';
+import InputField from '@/todolist/components/InputField';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
-const AddItem = ({ toggleModal, handleAdd }: AddItemProps) => {
+interface AddItemProps {
+    toggleModal: () => void;
+    handleAdd: HandleAddTodo;
+}
+type HandleAddTodo = (todoItem: TodoList) => Promise<void>;
+type HandleChange = (e: React.ChangeEvent<HTMLInputElement>) => void;
+type FormatDate = (date: Date) => string;
+
+const AddItem: React.FC<AddItemProps> = ({ toggleModal, handleAdd }) => {
 
     const [todo, setTodo] = useState<TodoList>({
         id: 0,
@@ -13,7 +21,7 @@ const AddItem = ({ toggleModal, handleAdd }: AddItemProps) => {
         dueDate: new Date()
     });
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange: HandleChange = (e) => {
         const { name, value, type, checked } = e.target;
         setTodo(prevTodo => ({
             ...prevTodo,
@@ -27,7 +35,7 @@ const AddItem = ({ toggleModal, handleAdd }: AddItemProps) => {
     };
 
     // 格式化日期為 YYYY-MM-DD
-    const formatDate = (date: Date): string => {
+    const formatDate: FormatDate = (date) => {
         return date.toISOString().split('T')[0];
     };
 

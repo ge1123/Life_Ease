@@ -3,7 +3,9 @@ import { useState, useEffect } from 'react';
 
 const url: string = "https://localhost:7082/api/lifemanage/todo";
 
-const useTodos = () => {
+type UseTodoStateHook = () => UseTodoState;
+
+const useTodoState: UseTodoStateHook = (): UseTodoState => {
 
     // 待辦事項資料
     const [todos, setTodos] = useState<TodoList[]>([]);
@@ -17,7 +19,7 @@ const useTodos = () => {
 
     const loadTodos: LoadTodos = async (params: TodoQueryParams = {}): Promise<void> => {
         const queryParams = new URLSearchParams();
-    
+
         // 將參數添加到查詢字串中
         Object.keys(params).forEach(key => {
             const value = params[key as keyof TodoQueryParams];
@@ -25,22 +27,22 @@ const useTodos = () => {
                 queryParams.append(key, value.toString());
             }
         });
-    
+
         const query = queryParams.toString();
         const urlWithParams = query ? `${url}?${query}` : url;
-    
+
         const config: RequestInit = {
             method: 'GET',
             headers: {
                 'Accept': 'application/json'
             }
         };
-    
+
         const result: TodoList[] = await fetchPagedData(urlWithParams, config);
         setTodos(result);
         setLoading(false);
     }
-    
+
 
     const addTodo: CreateTodo = async (todoList: TodoList): Promise<void> => {
         const config: RequestInit = {
@@ -87,4 +89,4 @@ const useTodos = () => {
     return { todos, loading, addTodo, deleteTodo, updateTodo, loadTodos };
 };
 
-export default useTodos;
+export default useTodoState;

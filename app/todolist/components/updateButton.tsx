@@ -1,7 +1,12 @@
 import React, { useState, useEffect, FormEvent } from 'react';
 import EditItem from '@/todolist/components/EditItem';
 
-const UpdateButton = ({ id, handleUpdate }: UpdateButtonProps) => {
+interface UpdateButtonProps {
+    id: number;
+    handleUpdate: UpdateTodo;
+}
+
+const UpdateButton: React.FC<UpdateButtonProps> = ({ id, handleUpdate }) => {
     // 顯示/隱藏 編輯事項視窗 
     const [showModal, setShowModal] = useState(false);
 
@@ -18,7 +23,7 @@ const UpdateButton = ({ id, handleUpdate }: UpdateButtonProps) => {
                 <i className="fas fa-edit align-middle"></i>
             </button>
             {
-                showModal && 
+                showModal &&
                 <EditItem
                     id={id}
                     toggleModal={toggleModal}
