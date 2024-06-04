@@ -12,7 +12,7 @@ type HandleSearch = () => void;
 type TodoComponent = () => React.JSX.Element;
 
 const TodoList: TodoComponent = () => {
-  const { todos, loading, addTodo, deleteTodo, updateTodo, loadTodos } = useTodoState();
+  const { todos, loading, addTodoAsync: addTodo, deleteTodoAsync: deleteTodo, updateTodoAsync: updateTodo, loadTodosAsync: loadTodos } = useTodoState();
 
   // 用於存儲搜尋關鍵字的狀態
   const [searchKeyword, setSearchKeyword] = useState<string>('');

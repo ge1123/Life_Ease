@@ -3,7 +3,7 @@ import EditItem from '@/todolist/components/editItem';
 
 interface UpdateButtonProps {
     id: number;
-    handleUpdate: UpdateTodo;
+    handleUpdate: UpdateTodoAsync;
 }
 
 const UpdateButton: React.FC<UpdateButtonProps> = ({ id, handleUpdate }) => {

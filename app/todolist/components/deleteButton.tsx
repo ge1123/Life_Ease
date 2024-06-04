@@ -3,7 +3,7 @@ import React from 'react';
 
 interface DeleteButtonProps {
     id: number;
-    handleDelete: DeleteTodo;
+    handleDelete: DeleteTodoAsync;
 }
 
 const DeleteButton: React.FC<DeleteButtonProps> = ({ id, handleDelete }) => {

@@ -79,7 +79,7 @@ const fetchListDataAsync: GetDataAsync = async<T>(url: string, config: RequestIn
     return result.data;
 }
 
-const postDataAsync: CreateDataAsync = async (url, data, config = {}) => {
+const createDataAsync: CreateDataAsync = async (url, data, config = {}) => {
 
     const requestInit: RequestInit = await setConfigAsync('POST', config, data);
     const response: Response = await fetch(url, requestInit);
@@ -102,9 +102,9 @@ const updateDataAsync: UpdateDataAsync = async (url, data, config = {}) => {
 
 
 export {
-    fetchPagedDataAsync as fetchPagedData,
-    postDataAsync as postData,
-    deleteDataAsync as deleteData,
-    updateDataAsync as updateData,
-    fetchListDataAsync as fetchListData
+    fetchPagedDataAsync,
+    createDataAsync,
+    deleteDataAsync,
+    updateDataAsync,
+    fetchListDataAsync
 };

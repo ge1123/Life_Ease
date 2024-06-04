@@ -18,21 +18,21 @@ type SubmitHandler = () => void;
 
 type ToggleModal = () => void;
 
-type DeleteTodo = (id: number) => Promise<void>;
+type DeleteTodoAsync = (id: number) => Promise<void>;
 
-type UpdateTodo = (todoList: TodoList) => Promise<void>;
+type UpdateTodoAsync = (todoList: TodoList) => Promise<void>;
 
-type CreateTodo = (todoList: TodoList) => Promise<void>;
+type CreateTodoAsync = (todoList: TodoList) => Promise<void>;
 
-type LoadTodos = (params?: TodoQueryParams) => Promise<void>;
+type LoadTodosAsync = (params?: TodoQueryParams) => Promise<void>;
 
 interface UseTodoState {
     todos: TodoList[];
     loading: boolean;
-    addTodo: CreateTodo;
-    deleteTodo: DeleteTodo;
-    updateTodo: UpdateTodo;
-    loadTodos: LoadTodos;
+    addTodoAsync: CreateTodoAsync;
+    deleteTodoAsync: DeleteTodoAsync;
+    updateTodoAsync: UpdateTodoAsync;
+    loadTodosAsync: LoadTodosAsync;
 }
 
 

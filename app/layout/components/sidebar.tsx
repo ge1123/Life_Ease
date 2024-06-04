@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { fetchListData, } from '@/utils/api';
+import { fetchListDataAsync, } from '@/utils/api';
 
 interface SidebarMenu {
     id: number;
@@ -41,7 +41,7 @@ const loadSidebarMenu: LoadSidebarMenu = async (setSideBarMenu) => {
     };
 
     try {
-        const result: SidebarMenu[] = await fetchListData(url, config);
+        const result: SidebarMenu[] = await fetchListDataAsync(url, config);
         setSideBarMenu(result);
     } catch (error) {
         console.error("Failed to load sidebar menu:", error);

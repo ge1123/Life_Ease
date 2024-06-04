@@ -4,7 +4,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 
 interface EditItemProps {
     toggleModal: () => void;
-    handleUpdate: UpdateTodo;
+    handleUpdate: UpdateTodoAsync;
     id: number;
 }
 type HandleChange = (e: React.ChangeEvent<HTMLInputElement>) => void;

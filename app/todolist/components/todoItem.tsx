@@ -5,8 +5,8 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 type TodoItemProps = {
   loading: boolean;
   todoList: TodoList[];
-  handleDelete: DeleteTodo;
-  handleUpdate: UpdateTodo;
+  handleDelete: DeleteTodoAsync;
+  handleUpdate: UpdateTodoAsync;
 }
 
 const TodoItem: React.FC<TodoItemProps> = ({ loading, todoList, handleDelete, handleUpdate }) => {

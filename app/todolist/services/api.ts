@@ -1,4 +1,4 @@
-import { deleteData, fetchPagedData, postData, updateData } from '@/utils/api';
+import { deleteDataAsync, fetchPagedDataAsync, createDataAsync, updateDataAsync } from '@/utils/api';
 import { useState, useEffect } from 'react';
 
 const url: string = "https://localhost:7082/api/lifemanage/todo";
@@ -14,11 +14,11 @@ const useTodoState: UseTodoStateHook = (): UseTodoState => {
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        loadTodos();
+        loadTodosAsync();
     }, []);
 
-    const loadTodos: LoadTodos = async (params: TodoQueryParams = {}) => {
-        const queryParams = new URLSearchParams();
+    const loadTodosAsync: LoadTodosAsync = async (params: TodoQueryParams = {}) => {
+        const queryParams: URLSearchParams = new URLSearchParams();
 
         // 將參數添加到查詢字串中
         Object.keys(params).forEach(key => {
@@ -28,65 +28,44 @@ const useTodoState: UseTodoStateHook = (): UseTodoState => {
             }
         });
 
-        const query = queryParams.toString();
-        const urlWithParams = query ? `${url}?${query}` : url;
+        const query: string = queryParams.toString();
+        const urlWithParams: string = query ? `${url}?${query}` : url;
 
-        const config: RequestInit = {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json'
-            }
-        };
-
-        const result: TodoList[] = await fetchPagedData(urlWithParams, config);
+        const result: TodoList[] = await fetchPagedDataAsync(urlWithParams);
         setTodos(result);
         setLoading(false);
     }
 
 
-    const addTodo: CreateTodo = async (todoList) => {
-        const config: RequestInit = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                ...todoList,
-                dueDate: todoList.dueDate.toISOString()
-            })
-        };
+    const addTodoAsync: CreateTodoAsync = async (todoList) => {
 
-        await postData(url, todoList, config)
-        await loadTodos();
+        await createDataAsync(url, {
+            ...todoList,
+            dueDate: todoList.dueDate.toISOString()
+        })
+        await loadTodosAsync();
     }
 
-    const deleteTodo: DeleteTodo = async (id) => {
-        const config: RequestInit = {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        };
+    const deleteTodoAsync: DeleteTodoAsync = async (id) => {
 
-        await deleteData(`${url}/${id}`, config)
-        await loadTodos();
+        await deleteDataAsync(`${url}/${id}`)
+        await loadTodosAsync();
     }
 
-    const updateTodo: UpdateTodo = async (todoList) => {
-        const config: RequestInit = {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                ...todoList
-            })
-        };
-        await updateData(`${url}/${todoList.id}`, todoList, config)
-        await loadTodos();
+    const updateTodoAsync: UpdateTodoAsync = async (todoList) => {
+
+        await updateDataAsync(`${url}/${todoList.id}`, todoList)
+        await loadTodosAsync();
     }
 
-    return { todos, loading, addTodo, deleteTodo, updateTodo, loadTodos };
+    return {
+        todos,
+        loading,
+        addTodoAsync,
+        deleteTodoAsync,
+        updateTodoAsync,
+        loadTodosAsync
+    };
 };
 
 export default useTodoState;
