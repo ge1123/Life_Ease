@@ -1,8 +1,8 @@
-import React from 'react'; // 引入React，因为我们将使用React类型
-import Sidebar from '../components/Sidebar';
+import React from 'react'; 
+import Sidebar from '@/layout/components/sidebar';
 
 interface MainLayoutProps {
-  children: React.ReactNode; // 使用 React.ReactNode 类型来定义可以接收任何有效的React节点
+  children: React.ReactNode; // 使用 React.ReactNode 定義可接收任何React節點
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {

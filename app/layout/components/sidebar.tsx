@@ -4,12 +4,33 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { fetchListData, } from '@/utils/api';
 
-interface MenuButtonProps {
-    menu: SidebarMenu;
-    toggleMenu: (id: number) => void;
+interface SidebarMenu {
+    id: number;
+    title: string;
+    icon: string;
+    url: string;
+    parentId: number | null;
+    order: number;
+    permission: string;
+    description: string;
+    children: SidebarMenu[];
+    isExpanded?: boolean; // Add this property to track expanded state
 }
 
-async function loadSidebarMenu(setSideBarMenu: (data: SidebarMenu[]) => void) {
+type ToggleMenu = (id: number) => void;
+
+interface MenuButtonProps {
+    menu: SidebarMenu;
+    toggleMenu: ToggleMenu;
+}
+
+type MenuButton = () => React.JSX.Element;
+
+type SetSideBarMenu = (data: SidebarMenu[]) => void;
+
+type LoadSidebarMenu = (setSideBarMenu: SetSideBarMenu) => Promise<void>;
+
+const loadSidebarMenu: LoadSidebarMenu = async (setSideBarMenu) => {
     const url: string = "https://localhost:7082/api/lifemanage/menu";
 
     const config: RequestInit = {
@@ -18,11 +39,17 @@ async function loadSidebarMenu(setSideBarMenu: (data: SidebarMenu[]) => void) {
             'Accept': 'application/json'
         }
     };
-    const result: SidebarMenu[] = await fetchListData(url, config);
-    setSideBarMenu(result);
-}
 
-const MenuButton = ({ menu, toggleMenu }: MenuButtonProps) => {
+    try {
+        const result: SidebarMenu[] = await fetchListData(url, config);
+        setSideBarMenu(result);
+    } catch (error) {
+        console.error("Failed to load sidebar menu:", error);
+    }
+};
+
+
+const MenuButton: React.FC<MenuButtonProps> = ({ menu, toggleMenu }) => {
     return (
         <button
             onClick={() => toggleMenu(menu.id)}
@@ -53,7 +80,7 @@ const renderMenuItems = (menus: SidebarMenu[], toggleMenu: (id: number) => void)
     ));
 };
 
-function Sidebar() {
+const Sidebar = () => {
 
     const [menus, setSideBarMenus] = useState<SidebarMenu[]>([]);
 

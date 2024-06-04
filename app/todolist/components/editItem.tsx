@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FormEvent } from 'react';
-import InputField from '@/todolist/components/InputField';
+import InputField from '@/todolist/components/inputField';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 interface EditItemProps {

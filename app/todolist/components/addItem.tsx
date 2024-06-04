@@ -1,6 +1,6 @@
 "use client"; // This is a client component 👈🏽
 import React, { useState } from 'react';
-import InputField from '@/todolist/components/InputField';
+import InputField from '@/todolist/components/inputField';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 interface AddItemProps {

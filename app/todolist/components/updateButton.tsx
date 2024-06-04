@@ -1,5 +1,5 @@
 import React, { useState, useEffect, FormEvent } from 'react';
-import EditItem from '@/todolist/components/EditItem';
+import EditItem from '@/todolist/components/editItem';
 
 interface UpdateButtonProps {
     id: number;
