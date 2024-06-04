@@ -17,7 +17,7 @@ const useTodoState: UseTodoStateHook = (): UseTodoState => {
         loadTodos();
     }, []);
 
-    const loadTodos: LoadTodos = async (params: TodoQueryParams = {}): Promise<void> => {
+    const loadTodos: LoadTodos = async (params: TodoQueryParams = {}) => {
         const queryParams = new URLSearchParams();
 
         // 將參數添加到查詢字串中
@@ -44,7 +44,7 @@ const useTodoState: UseTodoStateHook = (): UseTodoState => {
     }
 
 
-    const addTodo: CreateTodo = async (todoList: TodoList): Promise<void> => {
+    const addTodo: CreateTodo = async (todoList) => {
         const config: RequestInit = {
             method: 'POST',
             headers: {
@@ -60,7 +60,7 @@ const useTodoState: UseTodoStateHook = (): UseTodoState => {
         await loadTodos();
     }
 
-    const deleteTodo: DeleteTodo = async (id: number): Promise<void> => {
+    const deleteTodo: DeleteTodo = async (id) => {
         const config: RequestInit = {
             method: 'DELETE',
             headers: {
@@ -72,7 +72,7 @@ const useTodoState: UseTodoStateHook = (): UseTodoState => {
         await loadTodos();
     }
 
-    const updateTodo: UpdateTodo = async (todoList: TodoList): Promise<void> => {
+    const updateTodo: UpdateTodo = async (todoList) => {
         const config: RequestInit = {
             method: 'PUT',
             headers: {

@@ -1,45 +1,76 @@
-const fetchPagedData: FetchData = async<T>(url: string, config: RequestInit = {}): Promise<T[]> => {
-    const response = await fetch(url, {
-        ...config,
-        headers: {
-            'Accept': 'application/json',
-            ...config.headers,
-        }
-    });
+type GetDataAsync = <T>(url: string, config?: RequestInit) => Promise<T[]>;
 
-    // 後端server是否能正常連線
-    if (!response.ok) {
-        throw new Error('Failed to fetch');
+type CreateDataAsync = <T>(url: string, data: T, config?: RequestInit) => Promise<T>;
+
+type DeleteDataAsync = (url: string, config?: RequestInit) => Promise<void>;
+
+type UpdateDataAsync = <T>(url: string, data: T, config?: RequestInit) => Promise<void>;
+
+type SetConfigAsync = <T>(method: string, config: RequestInit, data?: T) => Promise<RequestInit>
+
+type HandleResponseAsync = <T>(response: Response) => Promise<T>;
+
+interface PageResultResponse<T> {
+    code: number;
+    status: string;
+    data: {
+        items: T[];
+        total: number;
+    };
+}
+
+interface ListResultResponse<T> {
+    code: number;
+    status: string;
+    data: T[];
+}
+
+const setConfigAsync: SetConfigAsync = async (method, config, data) => {
+    const baseConfig: RequestInit = {
+        method: method,
+        headers: {
+            'Content-Type': 'application/json',
+            ...(config?.headers || {}),
+        },
+        ...config,
+    };
+
+    if (data !== undefined) {
+        return {
+            ...baseConfig,
+            body: JSON.stringify(data),
+        };
     }
 
-    const result: PagedApiResponse<T> = await response.json();
+    return baseConfig;
+};
 
-    // api
+const handleResponseAsync: HandleResponseAsync = async (response) => {
+    // 後端server是否能正常連線
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status} ${response.statusText}`);
+    }
+    return response.json();
+};
+
+const fetchPagedDataAsync: GetDataAsync = async<T>(url: string, config: RequestInit = {}) => {
+
+    const requestInit: RequestInit = await setConfigAsync('GET', config);
+    const response: Response = await fetch(url, requestInit);
+    const result: PageResultResponse<T> = await handleResponseAsync(response);
+
     if (result.code !== 200) {
         throw new Error(result.status);
     }
 
-    // 分頁跟全撈的資料結構不同
-    if (!result.data.items) {
-        return result.data.items;
-    }
     return result.data.items;
 }
 
-const fetchListData: FetchData = async<T>(url: string, config: RequestInit = {}): Promise<T[]> => {
-    const response = await fetch(url, {
-        ...config,
-        headers: {
-            'Accept': 'application/json',
-            ...config.headers,
-        }
-    });
+const fetchListDataAsync: GetDataAsync = async<T>(url: string, config: RequestInit = {}) => {
 
-    if (!response.ok) {
-        throw new Error('Failed to fetch');
-    }
-
-    const result: ListApiResponse<T> = await response.json();
+    const requestInit: RequestInit = await setConfigAsync('GET', config);
+    const response: Response = await fetch(url, requestInit);
+    const result: ListResultResponse<T> = await handleResponseAsync(response);
 
     if (result.code !== 200) {
         throw new Error(result.status);
@@ -48,75 +79,32 @@ const fetchListData: FetchData = async<T>(url: string, config: RequestInit = {})
     return result.data;
 }
 
-const postData: CreateData = async <T>(url: string, data: T, config?: RequestInit): Promise<T> => {
-    try {
-        const finalConfig = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                ...(config?.headers || {}),
-            },
-            body: JSON.stringify(data),
-            ...config,
-        };
+const postDataAsync: CreateDataAsync = async (url, data, config = {}) => {
 
-        const response = await fetch(url, finalConfig);
-
-        if (!response.ok) {
-            throw new Error(`Failed to POST: ${response.status} ${response.statusText}`);
-        }
-
-        return response.json();
-    } catch (error) {
-        console.error('Error in POST request:', error);
-        throw error;
-    }
+    const requestInit: RequestInit = await setConfigAsync('POST', config, data);
+    const response: Response = await fetch(url, requestInit);
+    return handleResponseAsync(response);
 }
 
-const deleteData: DeleteData = async (url: string, config?: RequestInit): Promise<void> => {
-    try {
-        const finalConfig = {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                ...(config?.headers || {}),
-            },
-            ...config,
-        };
+const deleteDataAsync: DeleteDataAsync = async (url, config = {}) => {
 
-        const response = await fetch(url, finalConfig);
-
-        if (!response.ok) {
-            throw new Error(`Failed to DELETE: ${response.status} ${response.statusText}`);
-        }
-    } catch (error) {
-        console.error('Error in DELETE request:', error);
-        throw error;
-    }
+    const requestInit: RequestInit = await setConfigAsync('DELETE', config);
+    const response: Response = await fetch(url, requestInit);
+    await handleResponseAsync<void>(response);
 }
 
-const updateData: UpdateData = async (url: string, data: any, config?: RequestInit): Promise<void> => {
-    try {
-        const finalConfig = {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                ...(config?.headers || {}),
-            },
-            body: JSON.stringify(data),
-            ...config,
-        };
+const updateDataAsync: UpdateDataAsync = async (url, data, config = {}) => {
 
-        const response = await fetch(url, finalConfig);
-
-        if (!response.ok) {
-            throw new Error(`Failed to PUT: ${response.status} ${response.statusText}`);
-        }
-    } catch (error) {
-        console.error('Error in PUT request:', error);
-        throw error;
-    }
+    const requestInit: RequestInit = await setConfigAsync('PUT', config, data);
+    const response: Response = await fetch(url, requestInit);
+    await handleResponseAsync<void>(response);
 }
 
 
-export { fetchPagedData, postData, deleteData, updateData, fetchListData };
+export {
+    fetchPagedDataAsync as fetchPagedData,
+    postDataAsync as postData,
+    deleteDataAsync as deleteData,
+    updateDataAsync as updateData,
+    fetchListDataAsync as fetchListData
+};
