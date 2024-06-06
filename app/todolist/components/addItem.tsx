@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import InputField from '@/todolist/components/inputField';
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import '@/todolist/styles/todolist.style.scss';
 
 interface AddItemProps {
     toggleModal: () => void;
@@ -40,19 +41,19 @@ const AddItem: React.FC<AddItemProps> = ({ toggleModal, handleAdd }) => {
     };
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-40 flex justify-center items-center">
-            <div className="relative bg-white p-5 border border-gray-300 shadow-lg rounded-lg">
+        <div className="addItem__background">
+            <div className="addItem__container">
                 <h1
-                    className="text-2xl font-bold text-gray-700 mb-4">
+                    className="addItem__header">
                     新增事項
                 </h1>
                 <button
-                    className="absolute top-3 right-3 bg-transparent text-black-500 font-bold p-2 rounded-full hover:bg-gray-100"
+                    className="addItem__close-button"
                     onClick={toggleModal}>
                     <i className="fas fa-times"></i> {/* 關閉視窗 X */}
                 </button>
                 <div
-                    className="flex flex-col space-y-4">
+                    className="addItem__form-container">
                     <InputField
                         label="標題"
                         type="text"
@@ -79,7 +80,7 @@ const AddItem: React.FC<AddItemProps> = ({ toggleModal, handleAdd }) => {
                     />
                 </div>
                 <button
-                    className="bg-blue-500 text-white font-bold py-2 px-4 mt-4 rounded"
+                    className="addItem__submit-button"
                     onClick={handleSubmit}>
                     <i className="fas fa-save"></i> {/* 儲存 icon */}
                 </button>

@@ -1,0 +1,63 @@
+.addItem {
+  &__background {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 40;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__container {
+    position: relative;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid gray;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+
+  &__header {
+    font-size: 2rem;
+    font-weight: bold;
+    color: gray;
+    margin-bottom: 16px;
+  }
+
+  &__close-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: transparent;
+    color: black;
+    font-weight: bold;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+      background-color: lightgray;
+    }
+  }
+
+  &__form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__submit-button {
+    background-color: rgb(108, 108, 225);
+    color: white;
+    font-weight: bold;
+    padding: 10px 16px;
+    margin-top: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+
+    i {
+      margin-right: 2px;
+    }
+  }
+}
