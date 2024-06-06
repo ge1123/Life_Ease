@@ -61,3 +61,8 @@
     }
   }
 }
+
+
+.deleteButton {
+    @apply ml-auto bg-red-500 text-white px-4 py-2 rounded flex items-center justify-center;
+}
