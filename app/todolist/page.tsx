@@ -1,4 +1,4 @@
-export { default } from '@/todolist/components/Todolist';
+export { default } from '@/todolist/components/todolist';
 
 
 
