@@ -1,4 +1,4 @@
-import { deleteDataAsync, fetchPagedDataAsync, createDataAsync, updateDataAsync } from '@/utils/api';
+import { deleteDataAsync, fetchPagedDataAsync, createDataAsync, updateDataAsync } from '@/utils/apiClient';
 import { useState, useEffect } from 'react';
 
 const url: string = "https://localhost:7082/api/lifemanage/todo";

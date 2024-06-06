@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { fetchListDataAsync, } from '@/utils/api';
+import { fetchListDataAsync, } from '@/utils/apiClient';
 
 interface SidebarMenu {
     id: number;
