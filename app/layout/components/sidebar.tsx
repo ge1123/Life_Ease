@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { fetchListDataAsync, } from '@/utils/apiClient';
+import {BASE_URLS} from '@/utils/config';
+
 
 interface SidebarMenu {
     id: number;
@@ -31,7 +33,7 @@ type SetSideBarMenu = (data: SidebarMenu[]) => void;
 type LoadSidebarMenu = (setSideBarMenu: SetSideBarMenu) => Promise<void>;
 
 const loadSidebarMenu: LoadSidebarMenu = async (setSideBarMenu) => {
-    const url: string = "https://localhost:7082/api/lifemanage/menu";
+    const url: string = BASE_URLS.MENU;
 
     const config: RequestInit = {
         method: 'GET',

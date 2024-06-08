@@ -1,7 +1,8 @@
 import { deleteDataAsync, fetchPagedDataAsync, createDataAsync, updateDataAsync } from '@/utils/apiClient';
 import { useState, useEffect } from 'react';
+import {BASE_URLS} from '@/utils/config';
 
-const url: string = "https://localhost:7082/api/lifemanage/todo";
+const url: string = BASE_URLS.TODO;
 
 type UseTodoStateHook = () => UseTodoState;
 
