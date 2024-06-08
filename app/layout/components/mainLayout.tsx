@@ -1,5 +1,6 @@
 import React from 'react'; 
 import Sidebar from '@/layout/components/sidebar';
+import '@/styles/menu.style.scss';
 
 interface MainLayoutProps {
   children: React.ReactNode; // 使用 React.ReactNode 定義可接收任何React節點
@@ -7,9 +8,9 @@ interface MainLayoutProps {
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   return (
-    <div className="flex h-full">
+    <div className="mainLayout__container">
       <Sidebar />
-      <div className="flex-1">
+      <div className="mainLayout__menu">
         {children}
       </div>
     </div>
