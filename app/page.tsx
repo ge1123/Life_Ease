@@ -1,6 +1,6 @@
 "use client"; // This is a client component 👈🏽
 
-import MainLayout from './layout/mainLayout';
+import MainLayout from './layout/components/mainLayout';
 
 
 export default function Home() {
