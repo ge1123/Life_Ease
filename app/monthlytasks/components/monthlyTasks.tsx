@@ -1,7 +1,7 @@
 'use client';
 import Timeline from '@/monthlytasks/components/timeline';
-import MainLayout from '@/layout/components/mainLayout';
-import DownList from '@/components/monthly.downlist';
+import MainLayout from '@/_layout/components/mainLayout';
+import DownList from '@/_components/monthly.downlist';
 import '@/monthlytasks/styles/monthlyTask.scss';
 import useMonthlyTasksState from '@/monthlytasks/hooks/useMonthlyTasksState';
 

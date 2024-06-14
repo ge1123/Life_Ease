@@ -1,4 +1,4 @@
-import '@/styles/downlist.style.scss'
+import '@/_styles/downlist.style.scss'
 import React, { ChangeEvent } from 'react';
 
 interface DownListProps {

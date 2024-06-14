@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import AddItem from '@/todolist/components/addItem';
 import TodoItem from '@/todolist/components/todoItem';
 import useTodoState from '@/todolist/services/api';
-import MainLayout from '@/layout/components/mainLayout';
+import MainLayout from '@/_layout/components/mainLayout';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 type HandleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => void;

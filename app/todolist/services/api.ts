@@ -1,6 +1,6 @@
-import { deleteDataAsync, fetchPagedDataAsync, createDataAsync, updateDataAsync } from '@/utils/apiClient';
+import { deleteDataAsync, fetchPagedDataAsync, createDataAsync, updateDataAsync } from '@/_utils/apiClient';
 import { useState, useEffect } from 'react';
-import {BASE_URLS} from '@/utils/config';
+import {BASE_URLS} from '@/_utils/config';
 
 const url: string = BASE_URLS.TODO;
 
