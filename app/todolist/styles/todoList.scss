@@ -1,0 +1,33 @@
+.todoList {
+    &__container {
+      @apply flex flex-col items-center justify-center space-y-4;
+    }
+  
+    &__header {
+      @apply flex items-center justify-center space-x-4 mt-4;
+    }
+  
+    &__title {
+      @apply text-4xl;
+    }
+  
+    &__addButton {
+      @apply bg-blue-600 text-white font-bold py-1 px-2 rounded;
+    }
+  
+    &__search-Container {
+      @apply flex items-center justify-center space-x-4 mt-4;
+    }
+  
+    &__searchBox {
+      @apply p-2 rounded border border-gray-300 flex-1;
+    }
+  
+    &__searchButton {
+      @apply bg-blue-600 text-white font-bold py-1 px-2 rounded;
+    }
+  
+    &__itemContainer {
+      @apply container mx-auto px-4 max-w-xl;
+    }
+  }
