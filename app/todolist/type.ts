@@ -14,10 +14,6 @@ interface TodoQueryParams {
     dueDate?: Date;
 }
 
-type SubmitHandler = () => void;
-
-type ToggleModal = () => void;
-
 type DeleteTodoAsync = (id: number) => Promise<void>;
 
 type UpdateTodoAsync = (todoList: TodoList) => Promise<void>;

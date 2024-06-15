@@ -1,0 +1,21 @@
+.todoItem {
+    &__container {
+      @apply bg-gray-100 
+      p-4 
+      my-2 
+      rounded 
+      shadow 
+      flex 
+      items-center;
+    }
+  
+    &__title {
+      @apply font-semibold;
+    }
+  
+    &__button-container {
+      @apply ml-auto 
+      flex 
+      gap-2;
+    }
+  }
