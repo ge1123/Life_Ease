@@ -8,7 +8,7 @@ interface MonthlyTask {
     title: string;
     description: string;
     isCompleted: boolean;
-    dueDate: Date;
+    dueDate: string;
 };
 
 interface MonthsDict {

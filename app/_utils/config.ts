@@ -1,8 +1,11 @@
 // utils/config.ts
+
+const lifeManageUrl: string = "http://localhost:8013";
+
 export const BASE_URLS = {
     INDEX:"http://localhost:3000",
-    TODO: "http://localhost:8016/api/lifemanage/todo",
-    MENU: "http://localhost:8016/api/lifemanage/menu",
-    MONTHLYTASKS:"http://localhost:8016/api/lifemanage/monthlytasks",
+    TODO: `${lifeManageUrl}/api/lifemanage/todo`,
+    MENU: `${lifeManageUrl}/api/lifemanage/menu`,
+    MONTHLYTASKS: `${lifeManageUrl}/api/lifemanage/monthlytasks`,
     // Add other base URLs here
 };
