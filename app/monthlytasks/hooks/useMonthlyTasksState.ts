@@ -20,6 +20,8 @@ const useMonthlyTasksState: UseMonthlyTasksStateHook = () => {
 
     const fetchMonthlyTasks: FetchMonthlyTasks = useCallback(async (month) => {
         const response: MonthlyTask[] = await fetchMonthlyTasksData(month);
+                 
+        console.log('response', response);
         setMonthlyTasks(response);
     }, []);
 

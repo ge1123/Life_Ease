@@ -1,49 +1,57 @@
 .monthlyTask {
     &__container {
-        @apply relative 
-            p-4
-            flex 
-            items-center 
-            space-x-4
-            bg-gray-100
-            text-gray-800;
+        @apply relative  /* 相對定位 */
+            p-4  /* 內間距 4 */
+            flex  /* 彈性盒模型 */
+            items-center  /* 垂直居中 */
+            space-x-4  /* 子項目之間的間距 4 */
+            bg-gray-100  /* 背景色 灰色 100 */
+            text-gray-800;  /* 文字顏色 灰色 800 */
     }
+    
     &__label {
-        @apply text-lg 
-            font-semibold 
-            text-gray-700;
+        @apply text-lg  /* 文字尺寸 大 */
+            font-semibold  /* 字體加粗 */
+            text-gray-700;  /* 文字顏色 灰色 700 */
     }
-    &__dropdown {
-        @apply mt-0 
-            ml-0;
+
+    &__dropdown-container {
+        @apply mt-0  /* 上邊距 0 */
+            ml-0;  /* 左邊距 0 */
     }
+
     &__monthlyDownList {
-        @apply w-fit
-            items-center
-            border-gray-300
-            text-gray-800
-            rounded
-            p-2
-            hover:bg-gray-200;
+        @apply w-fit  /* 寬度自適應 */
+            items-center  /* 垂直居中 */
+            border-gray-300  /* 邊框顏色 灰色 300 */
+            text-gray-800  /* 文字顏色 灰色 800 */
+            rounded  /* 圓角 */
+            p-2  /* 內間距 2 */
+            hover:bg-gray-200;  /* 懸停時背景色 灰色 200 */
     }
-    &__tasks {
-        @apply mt-8
-            p-4
-            rounded-lg
-            shadow-md
-            bg-white
-            text-gray-800
-            flex 
-            flex-col
-            gap-4;
+
+    &__tasks-container {
+        @apply mt-8  /* 上邊距 8 */
+            p-4  /* 內間距 4 */
+            rounded-lg  /* 圓角 大 */
+            shadow-md  /* 陰影 中等 */
+            bg-white  /* 背景色 白色 */
+            text-gray-800  /* 文字顏色 灰色 800 */
+            flex  /* 彈性盒模型 */
+            flex-col  /* 垂直方向排列 */
+            gap-4;  /* 子項目之間的間距 4 */
     }
+
     &__task {
-        @apply p-2 
-            bg-gray-50 
-            rounded 
-            shadow-sm 
-            text-gray-700
-            border 
-            border-gray-200;
+        @apply p-2  /* 內間距 2 */
+            flex  /* 彈性盒模型 */
+            items-center  /* 垂直居中 */
+            bg-gray-50  /* 背景色 灰色 50 */
+            rounded  /* 圓角 */
+            shadow-sm  /* 陰影 小 */
+            text-gray-700  /* 文字顏色 灰色 700 */
+            border  /* 邊框 */
+            gap-4  /* 子項目之間的間距 4 */
+            border-gray-200;  /* 邊框顏色 灰色 200 */
     }
 }
