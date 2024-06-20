@@ -8,7 +8,28 @@ interface DownListProps {
     monthsDict: MonthsDict;
 }
 
+interface DownListOptionsProps {
+    monthsDict: MonthsDict;
+}
+
 type HandleMonthChange = (e: React.ChangeEvent<HTMLSelectElement>) => void;
+
+const DownListOptions: React.FC<DownListOptionsProps> = ({ monthsDict }) => {
+    return (
+        <>
+            {Object.entries(monthsDict).map(([month, value]) => {
+                <option
+                    key={month}
+                    value={value}
+                    className="monthlyDownlist____option">
+                    {month}
+                </option>
+
+            })}
+        </>
+    )
+}
+
 
 const Downlist: React.FC<DownListProps> = ({ className, selectedMonth, monthsDict, setSelectedMonth }) => {
 
@@ -23,16 +44,7 @@ const Downlist: React.FC<DownListProps> = ({ className, selectedMonth, monthsDic
                 value={selectedMonth}
                 onChange={handleMonthChange}
             >
-                {Object.entries(monthsDict).map(([month, value]) => {
-                    return (
-                        <option
-                            key={month}
-                            value={value}
-                            className="monthlyDownlist____option">
-                            {month}
-                        </option>
-                    );
-                })}
+                <DownListOptions monthsDict={monthsDict} />
             </select>
         </div>
     );
