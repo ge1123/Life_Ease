@@ -8,6 +8,28 @@ interface UpdateButtonProps {
     updateTodo: UpdateTodoAsync;
 }
 
+interface ShowEditWindowProps {
+    showModal: boolean,
+    id: number,
+    toggleModal: () => void,
+    updateTodo: UpdateTodoAsync
+}
+
+const ShowEditWindow: React.FC<ShowEditWindowProps> = ({ showModal, id, toggleModal, updateTodo }) => {
+    return (
+        <>
+            {
+                showModal &&
+                <EditItem
+                    id={id}
+                    toggleModal={toggleModal}
+                    updateTodo={updateTodo}
+                />
+            }
+        </>
+    )
+}
+
 const UpdateButton: React.FC<UpdateButtonProps> = ({ id, updateTodo }) => {
 
     const {
@@ -17,23 +39,16 @@ const UpdateButton: React.FC<UpdateButtonProps> = ({ id, updateTodo }) => {
 
     return (
         <div>
+            <ShowEditWindow showModal={showModal} id={id} toggleModal={toggleModal} updateTodo={updateTodo} />
+
             <button
                 className="updateButton__button"
                 onClick={toggleModal}
             >
                 <i className="fa fa-edit align-middle"></i>
             </button>
-            {
-                showModal &&
-                <EditItem
-                    id={id}
-                    toggleModal={toggleModal}
-                    updateTodo={updateTodo}
-                />
-            }
         </div>
     )
 }
-
 
 export default UpdateButton;
