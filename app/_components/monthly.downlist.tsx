@@ -17,15 +17,14 @@ type HandleMonthChange = (e: React.ChangeEvent<HTMLSelectElement>) => void;
 const DownListOptions: React.FC<DownListOptionsProps> = ({ monthsDict }) => {
     return (
         <>
-            {Object.entries(monthsDict).map(([month, value]) => {
-                <option
-                    key={month}
-                    value={value}
-                    className="monthlyDownlist____option">
-                    {month}
-                </option>
-
-            })}
+            {Object.entries(monthsDict).map(([month, value]) => 
+                    <option
+                        key={month}
+                        value={value}
+                        className="monthlyDownlist____option">
+                        {month}
+                    </option>
+            )}
         </>
     )
 }
