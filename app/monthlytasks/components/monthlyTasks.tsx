@@ -4,17 +4,20 @@ import MainLayout from '@/_layout/components/mainLayout';
 import DownList from '@/_components/monthly.downlist';
 import '@/monthlytasks/styles/index.scss';
 import { useMonthlyTasksState } from '@/monthlytasks/hooks/index';
+import { Dispatch, SetStateAction } from 'react';
 
-export default function MonthlyTasks() {
+interface ChooseMonthProps {
+    selectedMonth: number;
+    setSelectedMonth: Dispatch<SetStateAction<number>>;
+    MONTHS_DICT: MonthsDict;
+}
 
-    const {
-        setSelectedMonth,
-        MONTHS_DICT,
-        selectedMonth,
-        monthlyTasks } = useMonthlyTasksState();
+interface TasksProps {
+    monthlyTasks: MonthlyTask[];
+}
 
-
-    const chooseMonth = (
+const ChooseMonth: React.FC<ChooseMonthProps> = ({ selectedMonth, setSelectedMonth, MONTHS_DICT }) => {
+    return (
         <>
             <span className='monthlyTask__label'>請選擇月份</span>
             <div className="monthlyTask__dropDown-container">
@@ -27,8 +30,10 @@ export default function MonthlyTasks() {
             </div>
         </>
     )
+}
 
-    const tasks = (
+const Tasks: React.FC<TasksProps> = ({ monthlyTasks }) => {
+    return (
         <>
             {monthlyTasks.length === 0 ? (
                 <div>無工作事項</div>
@@ -44,16 +49,24 @@ export default function MonthlyTasks() {
             )}
         </>
     )
+}
 
+export default function MonthlyTasks() {
+
+    const {
+        setSelectedMonth,
+        MONTHS_DICT,
+        selectedMonth,
+        monthlyTasks } = useMonthlyTasksState();
 
     return (
         <MainLayout>
             <div className="monthlyTask__container">
-                {chooseMonth}
+                <ChooseMonth selectedMonth={selectedMonth} setSelectedMonth={setSelectedMonth} MONTHS_DICT={MONTHS_DICT} />
             </div>
 
             <div className="monthlyTask__tasks-container">
-                {tasks}
+                <Tasks monthlyTasks={monthlyTasks} />
             </div>
         </MainLayout>
     );
