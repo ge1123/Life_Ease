@@ -4,25 +4,13 @@ import InputField from '@/todolist/components/modal/inputField';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '@/todolist/styles/index.scss';
 import useAddTodo from '@/todolist/hooks/useAddTodo';
+import { AddItemProps, AddFormProps, CloseButtonProps } from '@/todolist/types/index.type';
 
-interface AddItemProps {
-    toggleModal: () => void;
-    addTodo: AddTodo;
-}
-
-type AddTodo = (todoItem: TodoList) => Promise<void>;
-
-interface HandleAddSubmitProps {
+type AddSubmitButtonProps = {
     handleAddSubmit: () => void;
 }
 
-interface AddFormProps {
-    todo: TodoList;
-    formatDate: (date: Date) => string;
-    handleAddChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-const SubmitButton: React.FC<HandleAddSubmitProps> = ({ handleAddSubmit }) => {
+const SubmitButton: React.FC<AddSubmitButtonProps> = ({ handleAddSubmit }) => {
     return (
         <button
             className="addItem__submit-button"
@@ -32,11 +20,12 @@ const SubmitButton: React.FC<HandleAddSubmitProps> = ({ handleAddSubmit }) => {
     )
 }
 
-const CloseButton: React.FC<{ toggleModal: () => void }> = ({ toggleModal }) => {
+
+const CloseButton: React.FC<CloseButtonProps> = ({ toggleModal }) => {
     return (
         <button
             className="addItem__close-button"
-            onClick={toggleModal}>
+            onClick={() => toggleModal()}>
             <i className="fas fa-times"></i> {/* 關閉視窗 X */}
         </button>
     )
@@ -74,14 +63,14 @@ const AddForm: React.FC<AddFormProps> = ({ todo, formatDate, handleAddChange }) 
     )
 }
 
-const AddItem: React.FC<AddItemProps> = ({ toggleModal, addTodo }) => {
+const AddItem: React.FC<AddItemProps> = ({ toggleModalOpenStatus, addTodo }) => {
 
     const {
         todo,
         handleAddChange,
         handleAddSubmit,
         formatDate
-    } = useAddTodo(toggleModal, addTodo);
+    } = useAddTodo(toggleModalOpenStatus, addTodo);
 
     return (
         <div className="addItem__background">
@@ -90,7 +79,7 @@ const AddItem: React.FC<AddItemProps> = ({ toggleModal, addTodo }) => {
                     className="addItem__header">
                     新增事項
                 </h1>
-                <CloseButton toggleModal={toggleModal} />
+                <CloseButton toggleModal={toggleModalOpenStatus} />
 
                 <div
                     className="addItem__form-container">

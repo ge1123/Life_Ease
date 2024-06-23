@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import useTodoState from '@/todolist/hooks/useTodoState';
-import { handleSearchChange, handleSearch, toggleModal } from '@/todolist/services/index';
+import { handleSearchChange, handleSearch, toggleModalOpenState } from '@/todolist/services/index';
+import { UseTodoHook } from '@/todolist/types/index.type';
 
-const useTodo = () => {
+
+const useTodo: UseTodoHook = () => {
     const {
         todos,
         loading,
@@ -13,19 +15,19 @@ const useTodo = () => {
     } = useTodoState();
 
     const [searchKeyword, setSearchKeyword] = useState<string>('');
-    const [showModal, setShowModal] = useState(false);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     return {
         todos,
         loading,
         searchKeyword,
-        showModal,
+        isModalOpen,
         addTodo,
         deleteTodo,
         updateTodo,
         handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => handleSearchChange(e, setSearchKeyword),
         handleSearch: () => handleSearch(searchKeyword, loadTodos),
-        toggleModal: () => toggleModal(setShowModal)
+        toggleModalOpenStatus: () => toggleModalOpenState(setIsModalOpen)
     };
 };
 

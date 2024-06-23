@@ -2,18 +2,8 @@ import React from 'react';
 import EditItem from '@/todolist/components/modal/editItem';
 import useModal from '@/todolist/hooks/useModal';
 import '@/todolist/styles/index.scss';
+import {EditButtonProps, ShowEditWindowProps, SaveButtonProps} from '@/todolist/types/index.type';
 
-interface UpdateButtonProps {
-    id: number;
-    updateTodo: UpdateTodoAsync;
-}
-
-interface ShowEditWindowProps {
-    showModal: boolean,
-    id: number,
-    toggleModal: () => void,
-    updateTodo: UpdateTodoAsync
-}
 
 const ShowEditWindow: React.FC<ShowEditWindowProps> = ({ showModal, id, toggleModal, updateTodo }) => {
     return (
@@ -30,7 +20,18 @@ const ShowEditWindow: React.FC<ShowEditWindowProps> = ({ showModal, id, toggleMo
     )
 }
 
-const UpdateButton: React.FC<UpdateButtonProps> = ({ id, updateTodo }) => {
+const SaveButton: React.FC<SaveButtonProps> = ({ toggleModal }) => {
+    return (
+        <button
+            className="updateButton__button"
+            onClick={toggleModal}
+        >
+            <i className="fa fa-edit align-middle"></i>
+        </button>
+    )
+}
+
+const EditButton: React.FC<EditButtonProps> = ({ id, updateTodo }) => {
 
     const {
         showModal,
@@ -41,14 +42,9 @@ const UpdateButton: React.FC<UpdateButtonProps> = ({ id, updateTodo }) => {
         <div>
             <ShowEditWindow showModal={showModal} id={id} toggleModal={toggleModal} updateTodo={updateTodo} />
 
-            <button
-                className="updateButton__button"
-                onClick={toggleModal}
-            >
-                <i className="fa fa-edit align-middle"></i>
-            </button>
+            <SaveButton toggleModal={toggleModal}/>
         </div>
     )
 }
 
-export default UpdateButton;
+export default EditButton;

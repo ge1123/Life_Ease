@@ -1,11 +1,7 @@
 "use client"; // This is a client component 👈🏽
 import React from 'react';
 import '@/todolist/styles/index.scss';
-
-interface DeleteButtonProps {
-    id: number;
-    deleteTodo: DeleteTodoAsync;
-}
+import { DeleteButtonProps } from '@/todolist/types/index.type';
 
 const DeleteButton: React.FC<DeleteButtonProps> = ({ id, deleteTodo }) => {
     return (

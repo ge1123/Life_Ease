@@ -1,10 +1,16 @@
-import { deleteDataAsync, fetchPagedDataAsync, createDataAsync, updateDataAsync } from '@/_utils/apiClient';
 import { useState, useEffect } from 'react';
-import { BASE_URLS } from '@/_utils/config';
+import { fetchTodosAsync, createTodoAsync, removeTodoAsync, modifyTodoAsync } from '@/todolist/services/api';
+import {
+    TodoList,
+    TodoQueryParams,
+    DeleteTodoAsync,
+    UpdateTodoAsync,
+    AddTodoAsync,
+    LoadTodosAsync,
+    UseTodoState,
+    UseTodoStateHook
+} from '@/todolist/types/index.type';
 
-const url: string = BASE_URLS.TODO;
-
-type UseTodoStateHook = () => UseTodoState;
 
 const useTodoState: UseTodoStateHook = (): UseTodoState => {
 
@@ -19,42 +25,23 @@ const useTodoState: UseTodoStateHook = (): UseTodoState => {
     }, []);
 
     const loadTodosAsync: LoadTodosAsync = async (params: TodoQueryParams = {}) => {
-        const queryParams: URLSearchParams = new URLSearchParams();
-
-        // 將參數添加到查詢字串中
-        Object.keys(params).forEach(key => {
-            const value = params[key as keyof TodoQueryParams];
-            if (value != null) { // 檢查 undefined 和 null
-                queryParams.append(key, value.toString());
-            }
-        });
-
-        const query: string = queryParams.toString();
-        const urlWithParams: string = query ? `${url}?${query}` : url;
-
-        const result: TodoList[] = await fetchPagedDataAsync(urlWithParams);
+        const result = await fetchTodosAsync(params);
         setTodos(result);
         setLoading(false);
     }
 
-
-    const addTodoAsync: CreateTodoAsync = async (todoList) => {
-
-        await createDataAsync(url, {
-            ...todoList,
-            dueDate: todoList.dueDate.toISOString()
-        })
+    const addTodoAsync: AddTodoAsync = async (todoList) => {
+        await createTodoAsync(todoList);
         await loadTodosAsync();
     }
 
     const deleteTodoAsync: DeleteTodoAsync = async (id) => {
-
-        await deleteDataAsync(`${url}/${id}`)
+        await removeTodoAsync(id);
         await loadTodosAsync();
     }
 
     const updateTodoAsync: UpdateTodoAsync = async (todoList) => {
-        await updateDataAsync(`${url}/${todoList.id}`, todoList);
+        await modifyTodoAsync(todoList);
         await loadTodosAsync();
     }
 

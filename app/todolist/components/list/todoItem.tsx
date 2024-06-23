@@ -1,24 +1,19 @@
 import DeleteButton from '@/todolist/components/button/deleteButton';
-import UpdateButton from '@/todolist/components/button/updateButton';
+import EditButton from '@/todolist/components/button/editButton';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '@/todolist/styles/index.scss';
+import { TodoItemProps } from '@/todolist/types/index.type';
 
-interface TodoItemProps {
-  loading: boolean;
-  todoList: TodoList[];
-  deleteTodo: DeleteTodoAsync;
-  updateTodo: UpdateTodoAsync;
-}
 
 const TodoItem: React.FC<TodoItemProps> = ({ loading, todoList, deleteTodo, updateTodo }) => {
 
   const Item = (
     <div>
-      {todoList.map(todo => (
+      {todoList.map(todo =>
         <div key={todo.id} className="todoItem__container">
           <span className="todoItem__title">{todo.title}</span>
           <div className="todoItem__button-container">
-            <UpdateButton
+            <EditButton
               id={todo.id}
               updateTodo={updateTodo}
             />
@@ -28,7 +23,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ loading, todoList, deleteTodo, upda
             />
           </div>
         </div>
-      ))}
+      )}
 
     </div>
   )

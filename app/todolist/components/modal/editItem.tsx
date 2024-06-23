@@ -3,25 +3,7 @@ import InputField from '@/todolist/components/modal/inputField';
 import useEditTodo from '@/todolist/hooks/useEditTodo';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '@/todolist/styles/index.scss';
-
-interface EditItemProps {
-    toggleModal: () => void;
-    updateTodo: UpdateTodoAsync;
-    id: number;
-}
-
-interface CloseButtonProps {
-    toggleModal: () => void;
-}
-
-interface InputFormProps {
-    todo: TodoList;
-    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
-
-interface SubmitButtonProps {
-    handleSubmit: () => void;
-}
+import { EditItemProps, CloseButtonProps, InputFormProps, SubmitButtonProps } from '@/todolist/types/index.type';
 
 const CloseButton: React.FC<CloseButtonProps> = ({ toggleModal }) => {
     return (
@@ -35,14 +17,15 @@ const CloseButton: React.FC<CloseButtonProps> = ({ toggleModal }) => {
 
 const InputForm: React.FC<InputFormProps> = ({ todo, handleChange }) => {
     return (
-        <><InputField
-            label="標題"
-            type="text"
-            name="title"
-            placeholder="請輸入標題"
-            value={todo.title}
-            onChange={handleChange}
-        />
+        <>
+            <InputField
+                label="標題"
+                type="text"
+                name="title"
+                placeholder="請輸入標題"
+                value={todo.title}
+                onChange={handleChange}
+            />
             <InputField
                 label="內容"
                 type="text"

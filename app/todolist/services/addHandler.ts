@@ -1,12 +1,10 @@
-import { Dispatch, SetStateAction } from 'react';
+import { HandleAddSubmit, HandleAddChange } from '@/todolist/types/index.type';
 
-type HandleAddSubmit = (handleAdd: (todo: TodoList) => void, todo: TodoList, toggleModal: () => void) => void;
-export const handleAddSubmit: HandleAddSubmit = (handleAdd, todo, toggleModal) => {
+export const handleAddSubmit: HandleAddSubmit = (handleAdd, todo, toggleModalOpenState) => {
     handleAdd(todo); // 新增事項 api
-    toggleModal(); // 關閉新增事項視窗
+    toggleModalOpenState((prev) => !prev); // 關閉新增事項視窗
 };
 
-type HandleAddChange = (e: React.ChangeEvent<HTMLInputElement>, setTodo: Dispatch<SetStateAction<TodoList>>) => void;
 export const handleAddChange: HandleAddChange = (e, setTodo) => {
     const { name, value, type, checked } = e.target;
     setTodo(prevTodo => ({

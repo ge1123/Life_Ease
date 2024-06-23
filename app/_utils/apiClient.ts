@@ -1,29 +1,3 @@
-type GetDataAsync = <T>(url: string, config?: RequestInit) => Promise<T[]>;
-
-type CreateDataAsync = <T>(url: string, data: T, config?: RequestInit) => Promise<T>;
-
-type DeleteDataAsync = (url: string, config?: RequestInit) => Promise<void>;
-
-type UpdateDataAsync = <T>(url: string, data: T, config?: RequestInit) => Promise<void>;
-
-type SetConfigAsync = <T>(method: string, config: RequestInit, data?: T) => Promise<RequestInit>
-
-type HandleResponseAsync = <T>(response: Response) => Promise<T>;
-
-interface PageResultResponse<T> {
-    code: number;
-    status: string;
-    data: {
-        items: T[];
-        total: number;
-    };
-}
-
-interface ListResultResponse<T> {
-    code: number;
-    status: string;
-    data: T[];
-}
 
 const setConfigAsync: SetConfigAsync = async (method, config, data) => {
     const baseConfig: RequestInit = {
