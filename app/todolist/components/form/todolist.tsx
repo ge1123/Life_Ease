@@ -6,7 +6,6 @@ import useTodo from '@/todolist/hooks/useTodo';
 import MainLayout from '@/_layout/components/mainLayout';
 import '@/todolist/styles/index.scss';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import AddButton from '@/todolist/components/button/addButton';
 import SearchButton from '@/todolist/components/button/searchButton';
 import SearchBox from '@/todolist/components/box/searchBox';
 import AddItemModal from '@/todolist/components/modal/addTodoModal';
@@ -30,14 +29,13 @@ const TodoList: React.FC = () => {
   return (
     <MainLayout>
 
-      <AddItemModal isModalOpen={isModalOpen} toggleModalOpenStatus={toggleModalOpenStatus} addTodo={addTodo} />
 
       <div className="todoList__container">
         <div className="todoList__header">
           <h1 className="todoList__title">
             待辦事項
           </h1>
-          <AddButton toggleModalOpenStatus={toggleModalOpenStatus} />
+          <AddItemModal isModalOpen={isModalOpen} toggleModalOpenStatus={toggleModalOpenStatus} addTodo={addTodo} />
         </div>
 
         <div className="todoList__search-Container">

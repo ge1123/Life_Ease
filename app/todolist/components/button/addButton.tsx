@@ -1,13 +1,14 @@
 import { AddButtonProps } from '@/todolist/types/index.type';
+import BaseButton from '@/_components/baseButton';
 
 const AddButton: React.FC<AddButtonProps> = ({ toggleModalOpenStatus }) => {
     return (
-        <button
+        <BaseButton
+            onClick={() => toggleModalOpenStatus()}
+            icon={<i className="fas fa-plus"></i>}
             className="todoList__addButton"
-            onClick={() => toggleModalOpenStatus()}>
-            <i className="fas fa-plus"></i> {/* 新增 + */}
-        </button>
-    )
-}
+        />
+    );
+};
 
 export default AddButton;

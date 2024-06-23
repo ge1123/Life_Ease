@@ -1,4 +1,3 @@
-import { ToggleModalOpenState } from "./index.type";
 
 
 
@@ -16,14 +15,4 @@ export interface TodoQueryParams {
     description?: string;
     isCompleted?: boolean;
     dueDate?: Date;
-}
-
-
-/**
- * 關閉視窗的按鈕。
- * @interface CloseButtonProps
- * @property {ToggleModal} toggleModal - 用於切換模態框可見性的函數。
- */
-export interface CloseButtonProps {
-    toggleModal: () => void;
 }

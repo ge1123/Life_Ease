@@ -4,13 +4,16 @@ import React from 'react';
 import AddItem from '@/todolist/components/modal/addItem';
 import '@/todolist/styles/index.scss';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import { ShowAddWindowProps } from '@/todolist/types/index.type';
+import { AddItemModalProps } from '@/todolist/types/index.type';
+import AddButton from '@/todolist/components/button/addButton';
 
 
 
-const AddItemModal: React.FC<ShowAddWindowProps> = ({ isModalOpen, toggleModalOpenStatus, addTodo }) => {
+const AddItemModal: React.FC<AddItemModalProps> = ({ isModalOpen, toggleModalOpenStatus, addTodo }) => {
     return (
         <>
+            <AddButton toggleModalOpenStatus={toggleModalOpenStatus} />
+
             {
                 isModalOpen &&
                 <AddItem

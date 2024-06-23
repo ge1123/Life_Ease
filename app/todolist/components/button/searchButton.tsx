@@ -1,13 +1,15 @@
 import { SearchButtonProps } from '@/todolist/types/index.type';
+import BaseButton from '@/_components/baseButton';
 
 const SearchButton: React.FC<SearchButtonProps> = ({ handleSearch }) => {
+
     return (
-        <button
+        <BaseButton
+            onClick={handleSearch}
+            icon={<i className="fas fa-search"></i> /* 搜尋 + */}
             className="todoList__searchButton"
-            onClick={handleSearch}>
-            <i className="fas fa-search"></i> {/* 搜尋 + */}
-        </button>
-    )
+        />
+    );
 }
 
 export default SearchButton;
