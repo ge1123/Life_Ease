@@ -1,13 +1,8 @@
-import { FormatDate, ToggleModalOpenState as ToggleModalOpenState } from '@/todolist/types/index.type';
+import { FormatDate, ToggleModalOpenState } from '@/todolist/types/index.type';
 
 
 // 格式化日期為 YYYY-MM-DD
 export const formatDate: FormatDate = (date) => {
-
-    if (typeof date === 'string') {
-        return date.split('T')[0];
-    }
-
     return date.toISOString().split('T')[0];
 };
 
