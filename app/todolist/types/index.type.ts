@@ -1,3 +1,5 @@
+export * from '@/todolist/types/todolistSchema.type';
+
 // common
 export * from '@/todolist/types/common.type';
 
