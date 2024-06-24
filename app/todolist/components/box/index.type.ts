@@ -1,0 +1,1 @@
+export * from '@/todolist/components/box/types/searchBox.type'
