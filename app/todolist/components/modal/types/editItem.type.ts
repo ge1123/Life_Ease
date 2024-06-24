@@ -1,4 +1,4 @@
-import {UpdateTodoAsync} from '@/todolist/types/index.type';
+import { UpdateTodoAsync, TodoList, FormatDate } from '@/todolist/types/index.type';
 
 /**
  * 編輯資料的按鈕。
@@ -10,6 +10,6 @@ import {UpdateTodoAsync} from '@/todolist/types/index.type';
 export interface EditItemProps {
     toggleModal: () => void;
     updateTodo: UpdateTodoAsync;
-    id: number;
+    item: TodoList;
 }
 

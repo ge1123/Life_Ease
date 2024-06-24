@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { handleUpdateSubmit, handleUpdateChange } from '@/todolist/services/index';
+import { handleUpdateSubmit, handleUpdateChange, formatDate } from '@/todolist/services/index';
 import { TodoList } from '@/todolist/types/index.type';
 import { UseEditTodoHook } from '@/todolist/types/index.type';
 /**
@@ -9,16 +9,15 @@ import { UseEditTodoHook } from '@/todolist/types/index.type';
  * @param updateTodo - 用於更新 todo 項目的異步函數
  * @returns 包含 todo 資料對象，處理變更的函數和提交編輯的函數
  */
-const useEditTodo: UseEditTodoHook = (id, toggleModal, updateTodo) => {
-
+const useEditTodo: UseEditTodoHook = (toggleModal, updateTodo, item) => {
     // 初始化編輯的 todo 資料
     // 點擊編輯按鈕時會帶入原本的 todo 資料
     const [todo, setTodo] = useState<TodoList>({
-        id: id,
-        title: '',
-        description: '',
-        isCompleted: false,
-        dueDate: new Date()
+        id: item.id,
+        title: item.title,
+        description: item.description,
+        isCompleted: item.isCompleted,
+        dueDate: item.dueDate
     });
 
     /**
@@ -39,7 +38,8 @@ const useEditTodo: UseEditTodoHook = (id, toggleModal, updateTodo) => {
     return ({
         todo,
         handleChange: handleChange,
-        handleSubmit: handleSubmit
+        handleSubmit: handleSubmit,
+        formatDate: formatDate
     })
 }
 

@@ -1,6 +1,6 @@
 import { deleteDataAsync, fetchPagedDataAsync, createDataAsync, updateDataAsync } from '@/_utils/apiClient';
 import { BASE_URLS } from '@/_utils/config';
-import { TodoQueryParams, RemoveTodoAsync, ModifyTodoAsync, CreateTodoAsync, FetchTodosAsync } from '@/todolist/types/index.type';
+import { TodoList, TodoQueryParams, RemoveTodoAsync, ModifyTodoAsync, CreateTodoAsync, FetchTodosAsync } from '@/todolist/types/index.type';
 
 const url: string = BASE_URLS.TODO;
 
@@ -17,8 +17,7 @@ export const fetchTodosAsync: FetchTodosAsync = async (params: TodoQueryParams =
 
     const query: string = queryParams.toString();
     const urlWithParams: string = query ? `${url}?${query}` : url;
-
-    return await fetchPagedDataAsync(urlWithParams);
+    return await fetchPagedDataAsync<TodoList>(urlWithParams);
 }
 
 export const createTodoAsync: CreateTodoAsync = async (todoList) => {

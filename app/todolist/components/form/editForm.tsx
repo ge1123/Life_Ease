@@ -1,7 +1,7 @@
 import InputField from '@/todolist/components/modal/inputField';
 import { EditFormProps } from '@/todolist/types/index.type';
 
-const EditForm: React.FC<EditFormProps> = ({ todo, handleChange }) => {
+const EditForm: React.FC<EditFormProps> = ({ todo, handleChange, formatDate }) => {
     return (
         <>
             <InputField
@@ -25,7 +25,7 @@ const EditForm: React.FC<EditFormProps> = ({ todo, handleChange }) => {
                 type="date"
                 name="dueDate"
                 placeholder="請輸入時間"
-                value={todo.dueDate.toISOString()}
+                value={formatDate(todo.dueDate)}
                 onChange={handleChange}
             />
         </>

@@ -7,13 +7,14 @@ import EditCloseButton from '@/todolist/components/button/editCloseButton';
 import UpdateSubmitButton from '@/todolist/components/button/updateSubmitButton';
 import EditForm from '@/todolist/components/form/editForm';
 
-const EditItem: React.FC<EditItemProps> = ({ toggleModal, updateTodo, id }) => {
+const EditItem: React.FC<EditItemProps> = ({ toggleModal, updateTodo, item }) => {
 
     const {
         todo,
         handleSubmit,
-        handleChange
-    } = useEditTodo(id, toggleModal, updateTodo);
+        handleChange,
+        formatDate
+    } = useEditTodo(toggleModal, updateTodo, item);
 
     return (
         <div className="editItem__background">
@@ -26,7 +27,7 @@ const EditItem: React.FC<EditItemProps> = ({ toggleModal, updateTodo, id }) => {
 
                 <div
                     className="editItem__form-container">
-                    <EditForm todo={todo} handleChange={handleChange} />
+                    <EditForm todo={todo} handleChange={handleChange} formatDate={formatDate} />
                 </div>
                 <UpdateSubmitButton handleSubmit={handleSubmit} />
             </div>
