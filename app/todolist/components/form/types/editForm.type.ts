@@ -1,4 +1,4 @@
-import { TodoList } from '@/todolist/types/index.type';
+import { TodoList, FormatDate } from '@/todolist/types/index.type';
 
 
 /**
@@ -10,4 +10,5 @@ import { TodoList } from '@/todolist/types/index.type';
 export interface EditFormProps {
     todo: TodoList;
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    formatDate: FormatDate;
 }

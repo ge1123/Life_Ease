@@ -14,8 +14,8 @@ const TodoItem: React.FC<TodoItemProps> = ({ loading, todoList, deleteTodo, upda
           <span className="todoItem__title">{todo.title}</span>
           <div className="todoItem__button-container">
             <EditItemModal
-              id={todo.id}
               updateTodo={updateTodo}
+              todo={todo}
             />
             <DeleteButton
               id={todo.id}

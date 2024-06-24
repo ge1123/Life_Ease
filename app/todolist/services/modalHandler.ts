@@ -1,4 +1,4 @@
-import { FormatDate, ToggleModalOpenState as ToggleModalOpenState } from '@/todolist/types/index.type'; 
+import { FormatDate, ToggleModalOpenState } from '@/todolist/types/index.type';
 
 
 // 格式化日期為 YYYY-MM-DD

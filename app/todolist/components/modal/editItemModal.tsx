@@ -5,7 +5,7 @@ import '@/todolist/styles/index.scss';
 import { EditItemModalProps } from '@/todolist/types/index.type';
 import EditButton from '@/todolist/components/button/editButton';
 
-const EditItemModal: React.FC<EditItemModalProps> = ({ id, updateTodo }) => {
+const EditItemModal: React.FC<EditItemModalProps> = ({ updateTodo, todo }) => {
 
     const {
         showModal,
@@ -15,13 +15,13 @@ const EditItemModal: React.FC<EditItemModalProps> = ({ id, updateTodo }) => {
     return (
         <div>
             <EditButton toggleModal={toggleModal} />
-            
+
             {
                 showModal &&
                 <EditItem
-                    id={id}
                     toggleModal={toggleModal}
                     updateTodo={updateTodo}
+                    item={todo}
                 />
             }
         </div>
