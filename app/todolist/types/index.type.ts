@@ -2,7 +2,7 @@
 export * from '@/todolist/types/common.type';
 
 // box
-export * from '@/todolist/components/box/index.type';
+export * from '@/todolist/components/box/types/index.type';
 
 // button
 export * from '@/todolist/components/button/types/index.type'
