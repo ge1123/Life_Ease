@@ -7,15 +7,18 @@ import { AddItemProps } from '@/todolist/types/index.type';
 import AddSubmitButton from '@/todolist/components/button/addSubmitButton';
 import AddCloseButton from '@/todolist/components/button/addCloseButton';
 import AddForm from '@/todolist/components/form/addForm';
+import { useTodoContext } from '@/todolist/context/todoContext';
 
-const AddItem: React.FC<AddItemProps> = ({ toggleModalOpenStatus, addTodo }) => {
+const AddItem: React.FC<AddItemProps> = ({ toggleModalOpenStatus }) => {
+
+    const todoContext = useTodoContext();
 
     const {
         todo,
         handleAddChange,
         handleAddSubmit,
         formatDate
-    } = useAddTodo(toggleModalOpenStatus, addTodo);
+    } = useAddTodo(toggleModalOpenStatus, todoContext.addTodo);
 
     return (
         <div className="addItem__background">

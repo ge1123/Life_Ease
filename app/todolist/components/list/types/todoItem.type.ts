@@ -10,8 +10,4 @@ import {TodoList, DeleteTodoAsync, UpdateTodoAsync} from '@/todolist/types/index
  * @property {UpdateTodoAsync} updateTodo - 用於更新待辦事項的函數。
  */
 export interface TodoItemProps {
-    loading: boolean;
-    todoList: TodoList[];
-    deleteTodo: DeleteTodoAsync;
-    updateTodo: UpdateTodoAsync;
   }

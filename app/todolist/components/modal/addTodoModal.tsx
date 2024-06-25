@@ -9,7 +9,7 @@ import AddButton from '@/todolist/components/button/addButton';
 
 
 
-const AddItemModal: React.FC<AddItemModalProps> = ({ isModalOpen, toggleModalOpenStatus, addTodo }) => {
+const AddItemModal: React.FC<AddItemModalProps> = ({ isModalOpen, toggleModalOpenStatus }) => {
     return (
         <>
             <AddButton toggleModalOpenStatus={toggleModalOpenStatus} />
@@ -18,7 +18,6 @@ const AddItemModal: React.FC<AddItemModalProps> = ({ isModalOpen, toggleModalOpe
                 isModalOpen &&
                 <AddItem
                     toggleModalOpenStatus={toggleModalOpenStatus}
-                    addTodo={addTodo}
                 />
             }
         </>
