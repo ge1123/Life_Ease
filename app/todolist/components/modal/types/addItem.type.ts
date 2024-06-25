@@ -9,6 +9,5 @@ import { AddTodoAsync } from "@/todolist/types/index.type";
  */
 export interface AddItemProps {
     toggleModalOpenStatus: () => void;
-    addTodo: AddTodoAsync;
 }
 

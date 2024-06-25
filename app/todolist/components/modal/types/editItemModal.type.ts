@@ -1,4 +1,3 @@
-import { UpdateTodoAsync, TodoList } from '@/todolist/types/index.type';
 
 /**
  * 編輯代辦事項的按鈕。
@@ -8,6 +7,5 @@ import { UpdateTodoAsync, TodoList } from '@/todolist/types/index.type';
  * @property {UpdateTodoAsync} updateTodo - 用於更新待辦事項項目的函數。
  */
 export type EditItemModalProps = {
-    updateTodo: UpdateTodoAsync;
-    todo: TodoList;
+    id: number;
 }

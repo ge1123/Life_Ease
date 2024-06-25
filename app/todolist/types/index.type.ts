@@ -24,6 +24,9 @@ export * from '@/todolist/hooks/types/index.type';
 // services
 export * from '@/todolist/services/types/index.type';
 
+// context
+export * from '@/todolist/context/types/todoContext.type';
+
 
 
 

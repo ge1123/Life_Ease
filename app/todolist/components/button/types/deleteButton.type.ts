@@ -9,5 +9,4 @@ import { DeleteTodoAsync } from '@/todolist/types/index.type';
  */
 export type DeleteButtonProps = {
     id: number;
-    deleteTodo: DeleteTodoAsync;
 }

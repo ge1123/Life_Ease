@@ -9,7 +9,6 @@ import { UpdateTodoAsync, TodoList, FormatDate } from '@/todolist/types/index.ty
  */
 export interface EditItemProps {
     toggleModal: () => void;
-    updateTodo: UpdateTodoAsync;
-    item: TodoList;
+    id: number;
 }
 

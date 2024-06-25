@@ -1,25 +1,27 @@
-import DeleteButton from '@/todolist/components/button/deleteButton';
-import EditItemModal from '@/todolist/components/modal/editItemModal';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '@/todolist/styles/index.scss';
+import DeleteButton from '@/todolist/components/button/deleteButton';
+import EditItemModal from '@/todolist/components/modal/editItemModal';
 import { TodoItemProps } from '@/todolist/types/index.type';
+import { useTodoContext } from '@/todolist/context/todoContext';
 
 
-const TodoItem: React.FC<TodoItemProps> = ({ loading, todoList, deleteTodo, updateTodo }) => {
+const TodoItem: React.FC<TodoItemProps> = () => {
 
-  const Item = (
+  const todoContext = useTodoContext();
+
+  return (
     <div>
-      {todoList.map(todo =>
+      {todoContext.todos.map(todo =>
         <div key={todo.id} className="todoItem__container">
           <span className="todoItem__title">{todo.title}</span>
           <div className="todoItem__button-container">
             <EditItemModal
-              updateTodo={updateTodo}
-              todo={todo}
+              id={todo.id}
             />
+
             <DeleteButton
               id={todo.id}
-              deleteTodo={deleteTodo}
             />
           </div>
         </div>
@@ -27,16 +29,6 @@ const TodoItem: React.FC<TodoItemProps> = ({ loading, todoList, deleteTodo, upda
 
     </div>
   )
-
-  return (
-    <div>
-      {
-        loading
-          ? <p>Loading...</p>
-          : Item
-      }
-    </div>
-  );
 }
 
 
