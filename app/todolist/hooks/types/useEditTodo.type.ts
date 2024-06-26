@@ -1,4 +1,4 @@
-import { TodoList, UpdateTodoAsync, FormatDate } from "@/todolist/types/index.type";
+import { TodoList, FormatDate } from "@/todolist/types/index.type";
 
 type UseEditTodo = {
     todo: TodoList;
@@ -7,4 +7,4 @@ type UseEditTodo = {
     formatDate: FormatDate;
 }
 
-export type UseEditTodoHook = (toggleModal: () => void, handleUpdate: UpdateTodoAsync, item: TodoList) => UseEditTodo;
+export type UseEditTodoState = (toggleModal: () => void, id: number) => UseEditTodo;

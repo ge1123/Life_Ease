@@ -4,25 +4,22 @@ import '@/todolist/styles/index.scss';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import React from 'react';
 import TodoItem from '@/todolist/components/list/todoItem';
-import useTodo from '@/todolist/hooks/useTodo';
+import useTodoState from '@/todolist/hooks/useTodo';
 import MainLayout from '@/_layout/components/mainLayout';
 import SearchButton from '@/todolist/components/button/searchButton';
 import SearchBox from '@/todolist/components/box/searchBox';
 import AddItemModal from '@/todolist/components/modal/addTodoModal';
-import { TodoProvider, useTodoContext } from '@/todolist/context/todoContext';
+import { TodoProvider } from '@/todolist/context/todoContext';
 
 
 const TodoList: React.FC = () => {
 
-  const todoContext = useTodoContext();
-
   const {
+    isLoading,
     searchKeyword,
-    isModalOpen,
     handleSearchChange,
     handleSearch,
-    toggleModalOpenStatus
-  } = useTodo(todoContext.loadTodos);
+  } = useTodoState();
 
   return (
     <>
@@ -31,7 +28,7 @@ const TodoList: React.FC = () => {
           <h1 className="todoList__title">
             待辦事項
           </h1>
-          <AddItemModal isModalOpen={isModalOpen} toggleModalOpenStatus={toggleModalOpenStatus} />
+          <AddItemModal/>
         </div>
 
         <div className="todoList__search-Container">
@@ -42,9 +39,9 @@ const TodoList: React.FC = () => {
 
       <div className="todoList__item-Container">
         {
-          todoContext.isLoading
-          ? <TodoItem/>
-          : <p>Loading...</p>
+          isLoading
+            ? <TodoItem />
+            : <p>Loading...</p>
         }
       </div>
     </>

@@ -1,5 +1,5 @@
-import React from 'react';
 import '@/todolist/styles/index.scss';
+import React from 'react';
 import {InputFieldProps} from '@/todolist/types/index.type';
 
 const InputField: React.FC<InputFieldProps> = ({ label, type, name, placeholder, value, onChange }) => {

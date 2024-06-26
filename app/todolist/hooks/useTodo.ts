@@ -1,34 +1,30 @@
 import { useState } from 'react';
-import useTodoState from '@/todolist/hooks/useTodoState';
-import { handleSearchChange, handleSearch, toggleModalOpenState } from '@/todolist/services/index';
-import { UseTodoHook } from '@/todolist/types/index.type';
+import { handleSearchChange, handleSearch } from '@/todolist/services/index';
+import { UseTodoState } from '@/todolist/types/index.type';
+import { useTodoContext } from '@/todolist/context/todoContext';
 
 
-const useTodo: UseTodoHook = () => {
-    const {
-        todos,
-        loading,
-        addTodoAsync: addTodo,
-        deleteTodoAsync: deleteTodo,
-        updateTodoAsync: updateTodo,
-        loadTodosAsync: loadTodos
-    } = useTodoState();
+const useTodoState: UseTodoState = () => {
+
+    const todoContext = useTodoContext();
 
     const [searchKeyword, setSearchKeyword] = useState<string>('');
-    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const searchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        handleSearchChange(e, setSearchKeyword);
+    }
+
+    const search = () => {
+        handleSearch(searchKeyword, todoContext.loadTodos);
+    }
+
 
     return {
-        todos,
-        loading,
-        searchKeyword,
-        isModalOpen,
-        addTodo,
-        deleteTodo,
-        updateTodo,
-        handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => handleSearchChange(e, setSearchKeyword),
-        handleSearch: () => handleSearch(searchKeyword, loadTodos),
-        toggleModalOpenStatus: () => toggleModalOpenState(setIsModalOpen)
+        isLoading: todoContext.isLoading,
+        searchKeyword: searchKeyword,
+        handleSearchChange: searchChange,
+        handleSearch: search,
     };
-};
+}
 
-export default useTodo;
+export default useTodoState;

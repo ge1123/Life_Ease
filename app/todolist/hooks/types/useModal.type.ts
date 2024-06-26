@@ -1,8 +1,7 @@
-import { ToggleModalOpenState } from '@/todolist/types/index.type';
 
 type UseModal = {
-    showModal: boolean;
-    toggleModal: () => void;
+    isModalOpen: boolean;
+    toggleModalVisibility: () => void;
 }
 
 export type UseModalHook = () => UseModal;

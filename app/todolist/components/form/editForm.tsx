@@ -1,4 +1,4 @@
-import InputField from '@/todolist/components/modal/inputField';
+import InputField from '@/todolist/components/box/inputField';
 import { EditFormProps } from '@/todolist/types/index.type';
 
 const EditForm: React.FC<EditFormProps> = ({ todo, handleChange, formatDate }) => {

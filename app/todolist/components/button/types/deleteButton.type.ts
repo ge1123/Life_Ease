@@ -1,4 +1,3 @@
-import { DeleteTodoAsync } from '@/todolist/types/index.type';
 
 /**
  * 刪除代辦事項的按鈕。

@@ -1,10 +1,10 @@
-import { TodoList, ToggleModalOpenState } from '@/todolist/types/index.type';
+import { TodoList, ToggleModalVisibility } from '@/todolist/types/index.type';
 import { Dispatch, SetStateAction } from 'react';
 
 export type HandleAddSubmit =
     (handleAdd: (todo: TodoList) => void,
         todo: TodoList,
-        toggleModal: ToggleModalOpenState)
+        toggleModal: ToggleModalVisibility)
         => void;
 
 export type HandleAddChange =
