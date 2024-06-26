@@ -6,9 +6,11 @@ todolist
 ├── components (UI 元件)
 │   ├── box 
 │   │   ├── searchBox.tsx 
+│   │   ├── inputField.tsx
 │   │   └── types
 │   │       ├── index.type.ts
-│   │       └── searchBox.type.ts
+│   │       ├── searchBox.type.ts
+│   │       └── inputField.type.ts
 │   ├── button (按鈕元件)
 │   │   ├── addButton.tsx 
 │   │   ├── addCloseButton.tsx 
@@ -46,14 +48,12 @@ todolist
 │   │   ├── addTodoModal.tsx
 │   │   ├── editItem.tsx
 │   │   ├── editItemModal.tsx
-│   │   ├── inputField.tsx
 │   │   └── types
 │   │       ├── addItem.type.ts
 │   │       ├── addItemModal.type.ts
 │   │       ├── editItem.type.ts
 │   │       ├── editItemModal.type.ts
-│   │       ├── index.type.ts
-│   │       └── inputField.type.ts
+│   │       └── index.type.ts
 ├── context (上下文)
 │   ├── todoContext.tsx
 │   └── types
