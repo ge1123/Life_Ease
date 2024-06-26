@@ -1,4 +1,4 @@
-import { FormatDate, ToggleModalOpenState } from '@/todolist/types/index.type';
+import { FormatDate, ToggleModalVisibility } from '@/todolist/types/index.type';
 
 
 // 格式化日期為 YYYY-MM-DD
@@ -7,6 +7,6 @@ export const formatDate: FormatDate = (date) => {
 };
 
 // 切換 Modal 狀態 (開啟/關閉)
-export const toggleModalOpenState: ToggleModalOpenState = (setShowModal) => {
+export const toggleModalVisibility: ToggleModalVisibility = (setShowModal) => {
     setShowModal(prev => !prev);
 };

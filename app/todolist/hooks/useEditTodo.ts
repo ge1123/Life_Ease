@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { handleUpdateSubmit, handleUpdateChange, formatDate } from '@/todolist/services/index';
-import { TodoList } from '@/todolist/types/index.type';
-import { UseEditTodoHook } from '@/todolist/types/index.type';
+import { TodoContextType, TodoList } from '@/todolist/types/index.type';
+import { UseEditTodoState } from '@/todolist/types/index.type';
+import { useTodoContext } from '../context/todoContext';
 /**
  * 自定義 Hook 用於處理編輯 todo 項目
  * @param id - 要編輯的 todo 項目的 ID
@@ -9,15 +10,19 @@ import { UseEditTodoHook } from '@/todolist/types/index.type';
  * @param updateTodo - 用於更新 todo 項目的異步函數
  * @returns 包含 todo 資料對象，處理變更的函數和提交編輯的函數
  */
-const useEditTodo: UseEditTodoHook = (toggleModal, updateTodo, item) => {
+const useEditTodoState: UseEditTodoState = (toggleModal, id) => {
+    const todoContext: TodoContextType = useTodoContext();
+
+    const item: TodoList | undefined = todoContext.todos.find(todo => todo.id === id);
+
     // 初始化編輯的 todo 資料
     // 點擊編輯按鈕時會帶入原本的 todo 資料
     const [todo, setTodo] = useState<TodoList>({
-        id: item.id,
-        title: item.title,
-        description: item.description,
-        isCompleted: item.isCompleted,
-        dueDate: item.dueDate
+        id: item?.id || -1,
+        title: item?.title || '',
+        description: item?.description || '',
+        isCompleted: item?.isCompleted || false,
+        dueDate: item?.dueDate || new Date()
     });
 
     /**
@@ -32,7 +37,7 @@ const useEditTodo: UseEditTodoHook = (toggleModal, updateTodo, item) => {
      * 提交編輯內容的函數
      */
     const handleSubmit = () => {
-        handleUpdateSubmit(updateTodo, todo, toggleModal);
+        handleUpdateSubmit(todoContext.updateTodo, todo, toggleModal);
     };
 
     return ({
@@ -45,4 +50,4 @@ const useEditTodo: UseEditTodoHook = (toggleModal, updateTodo, item) => {
 
 
 
-export default useEditTodo;
+export default useEditTodoState;

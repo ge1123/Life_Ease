@@ -1,4 +1,3 @@
-import { AddTodoAsync } from "@/todolist/types/index.type";
 
 /**
  * 新增資料的按鈕。
@@ -8,6 +7,6 @@ import { AddTodoAsync } from "@/todolist/types/index.type";
  * @property {AddTodoAsync} addTodo - 用於添加待辦事項的函數。
  */
 export interface AddItemProps {
-    toggleModalOpenStatus: () => void;
+    toggleModalVisibility: () => void;
 }
 

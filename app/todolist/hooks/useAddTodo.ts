@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { handleAddChange, formatDate, handleAddSubmit } from '@/todolist/services/index';
-import { TodoList, UseAddTodoHook } from '@/todolist/types/index.type';
+import { TodoList, UseAddTodoState } from '@/todolist/types/index.type';
+import { useTodoContext } from '@/todolist/context/todoContext';
 
-const useAddTodo: UseAddTodoHook = (toggleModalOpenStatus, addTodo) => {
+const useAddTodoState: UseAddTodoState = (toggleModalOpenStatus) => {
+
+    const todoContext = useTodoContext();
 
     const [todo, setTodo] = useState<TodoList>({
         id: 0,
@@ -15,9 +18,9 @@ const useAddTodo: UseAddTodoHook = (toggleModalOpenStatus, addTodo) => {
     return ({
         todo,
         handleAddChange: (e: React.ChangeEvent<HTMLInputElement>) => handleAddChange(e, setTodo),
-        handleAddSubmit: () => handleAddSubmit(addTodo, todo, toggleModalOpenStatus),
+        handleAddSubmit: () => handleAddSubmit(todoContext.addTodo, todo, toggleModalOpenStatus),
         formatDate
     })
 }
 
-export default useAddTodo;
+export default useAddTodoState;

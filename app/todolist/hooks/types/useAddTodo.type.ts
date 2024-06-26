@@ -1,5 +1,5 @@
 
-import { TodoList, FormatDate, AddTodoAsync, ToggleModalOpenState } from '@/todolist/types/index.type';
+import { TodoList, FormatDate, ToggleModalVisibility } from '@/todolist/types/index.type';
 
 type UseAddTodo = {
     todo: TodoList;
@@ -10,5 +10,5 @@ type UseAddTodo = {
 
 
 
-export type UseAddTodoHook = (toggleModalOpenState:ToggleModalOpenState, handleAdd: AddTodoAsync) => UseAddTodo;
+export type UseAddTodoState = (toggleModalOpenState:ToggleModalVisibility) => UseAddTodo;
 
