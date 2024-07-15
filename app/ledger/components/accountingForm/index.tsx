@@ -4,6 +4,7 @@ import AccountingCreation from "@/ledger/components/accountingForm/model/account
 import ExpenseForm from "./form/expenseForm";
 import IncomeForm from "./form/incomeForm";
 import useTransactionType from "@/ledger/hooks/useTransactionType";
+import '@/ledger/styles/accountingForm.scss';
 
 
 
@@ -17,7 +18,7 @@ const AccountingForm: React.FC = () => {
   } = useTransactionType();
 
   return (
-    <div className="bg-white rounded-lg p-6 space-y-4">
+    <div className="accounting-form__container">
       {isTypeSelected === false && <AccountingCreation selectTransactionType={selectTransactionType} />}
       {transactionType === "expense" && <ExpenseForm resetTransactionType={resetTransactionType} />}
       {transactionType === "income" && <IncomeForm resetTransactionType={resetTransactionType} />}

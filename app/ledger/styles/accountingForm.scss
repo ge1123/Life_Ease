@@ -1,3 +1,8 @@
+.accounting-form{
+    &__container{
+        @apply bg-white rounded-lg p-6 space-y-4;
+    }
+}
 .accounting-creation {
     &__container {
         @apply bg-white p-6 mb-4 rounded-lg flex items-center justify-center;
