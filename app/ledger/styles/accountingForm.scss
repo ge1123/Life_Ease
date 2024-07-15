@@ -1,0 +1,27 @@
+.accounting-creation {
+    &__container {
+        @apply bg-white p-6 mb-4 rounded-lg flex items-center justify-center;
+    }
+
+    &__type-button-container {
+        @apply flex space-x-4;
+    }
+
+    &__transaction-type-button {
+        &--expense {
+            @apply flex flex-col items-center justify-center text-white bg-pink-500 rounded-lg p-4 hover:bg-pink-600 transition duration-300 cursor-pointer shadow-md;
+        }
+
+        &--income {
+            @apply flex flex-col items-center justify-center text-white bg-green-500 rounded-lg p-4 hover:bg-green-600 transition duration-300 cursor-pointer shadow-md;
+        }
+
+        &__label {
+            @apply text-lg font-bold;
+        }
+
+        &__description {
+            @apply text-sm text-center;
+        }
+    }
+}

@@ -1,33 +1,30 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
+import { AccountingCreationProps } from '@/ledger/components/accountingForm/model/types';
+import TransactionTypeButton from '../button/transactionTypeButton';
+import '@/ledger/styles/accountingForm.scss';
 
 
-const AccountingCreation = ({ setType, setIsSelect }) => {
+const AccountingCreation: React.FC<AccountingCreationProps> = ({ selectTransactionType }) => {
 
-    const handleType= (type: string) => {
-        setType(type)
-        setIsSelect(true)
-    }
 
     return (
-        <div className="bg-white p-6 mb-4 rounded-lg">
-            <h1 className="text-2xl font-bold mb-4">建立帳額</h1>
-            <div className="flex space-x-4">
-                <div
-                    className="flex flex-col items-center justify-center text-white bg-pink-500 rounded-lg p-4 hover:bg-pink-600 transition duration-300 cursor-pointer shadow-md"
-                    onClick={() => handleType("expense")}
-                >
-                    <i className="fas fa-money-bill-wave text-3xl mb-2"></i>
-                    <span className="text-lg font-bold">支出</span>
-                    <p className="text-sm">記錄您的支出</p>
+        <div className="accounting-creation__container">
+            <div className="accounting-creation__type-button-container">
+                <div className="accounting-creation__transaction-type-button--expense">
+                    <TransactionTypeButton
+                        onClick={() => selectTransactionType("expense")}
+                        label="支出"
+                        description="記錄您的支出"
+                    />
                 </div>
-                <div
-                    className="flex flex-col items-center justify-center text-white bg-green-500 rounded-lg p-4 hover:bg-green-600 transition duration-300 cursor-pointer shadow-md"
-                    onClick={() => handleType("income")}
-                >
-                    <i className="fas fa-piggy-bank text-3xl mb-2"></i>
-                    <span className="text-lg font-bold">收入</span>
-                    <p className="text-sm">記錄您的收入</p>
+
+                <div className="accounting-creation__transaction-type-button--income">
+                    <TransactionTypeButton
+                        onClick={() => selectTransactionType("income")}
+                        label="收入"
+                        description="記錄您的收入"
+                    />
                 </div>
             </div>
         </div>
