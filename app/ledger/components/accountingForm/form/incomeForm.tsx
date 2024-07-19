@@ -2,6 +2,7 @@ import CategorySelection from "@/ledger/components/accountingForm/model/category
 import ExpenseAmount from "@/ledger/components/accountingForm/model/expenseAmount";
 import ExpenseNotes from "@/ledger/components/accountingForm/model/expenseNotes";
 import TimeSelection from "@/ledger/components/accountingForm/model/timeSelection";
+import StepSection from "@/ledger/components/accountingForm/common/stepSection";
 import { IncomFormProps } from "@/ledger/components/accountingForm/form/types";
 
 const IncomForm: React.FC<IncomFormProps> = ({ resetTransactionType }) => {
@@ -10,11 +11,14 @@ const IncomForm: React.FC<IncomFormProps> = ({ resetTransactionType }) => {
     return (
         <>
             <TimeSelection />
-            <hr className="border-t-2 border-gray-200 my-4" />
+            <StepSection />
+
             <CategorySelection />
-            <hr className="border-t-2 border-gray-200 my-4" />
+            <StepSection />
+
             <ExpenseAmount />
-            <hr className="border-t-2 border-gray-200 my-4" />
+            <StepSection />
+            
             <ExpenseNotes />
 
             <div className="flex justify-end space-x-4">

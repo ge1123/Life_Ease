@@ -1,9 +1,10 @@
+import React from "react";
 import CategorySelection from "@/ledger/components/accountingForm/model/categorySelection";
 import ExpenseAmount from "@/ledger/components/accountingForm/model/expenseAmount";
 import ExpenseNotes from "@/ledger/components/accountingForm/model/expenseNotes";
 import StoreInfo from "@/ledger/components/accountingForm/model/storeInfo";
 import TimeSelection from "@/ledger/components/accountingForm/model/timeSelection";
-import React from "react";
+import StepSection from "@/ledger/components/accountingForm/common/stepSection";
 import { ExpenseFormProps } from "@/ledger/components/accountingForm/form/types";
 
 
@@ -13,13 +14,17 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ resetTransactionType }) => {
     return (
         <>
             <TimeSelection />
-            <hr className="border-t-2 border-gray-200 my-4" />
+            <StepSection />
+
             <CategorySelection />
-            <hr className="border-t-2 border-gray-200 my-4" />
+            <StepSection />
+
             <StoreInfo />
-            <hr className="border-t-2 border-gray-200 my-4" />
+            <StepSection />
+
             <ExpenseAmount />
-            <hr className="border-t-2 border-gray-200 my-4" />
+            <StepSection />
+            
             <ExpenseNotes />
 
             <div className="flex justify-end space-x-4">
