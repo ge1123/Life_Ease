@@ -3,3 +3,7 @@ export interface TransactionTypeButtonProps {
     label: string;
     description: string;
 }
+
+export interface ReturnButtonProps{
+    onClick: () => void;
+}
