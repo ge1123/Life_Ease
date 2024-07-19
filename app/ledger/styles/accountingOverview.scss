@@ -1,0 +1,21 @@
+.accounting-overview {
+    &__container {
+        @apply bg-white p-6 mb-4 rounded-lg;
+    }
+
+    &__summary {
+        @apply text-2xl font-bold mb-4;
+    }
+
+    &__record {
+        @apply flex space-x-4;
+    }
+
+    &__button {
+        @apply flex items-center text-blue-500 bg-white rounded px-4 py-2 border border-blue-300 hover:bg-gray-100 transition duration-300;
+    }
+
+    &__icon {
+        @apply mr-2;
+    }
+}
