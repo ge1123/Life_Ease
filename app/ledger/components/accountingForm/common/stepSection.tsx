@@ -1,8 +1,9 @@
-// components/accountingForm/common/StepSection.tsx
+import '@/ledger/styles/accountingForm.scss';
+
 const StepSection: React.FC = () => {
     return (
         <>
-            <hr className="border-t-2 border-gray-200 my-4" />
+            <hr className="accounting-form__stepSection" />
         </>
     );
 };
