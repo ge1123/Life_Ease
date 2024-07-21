@@ -11,7 +11,7 @@ const AccountingCreation: React.FC<AccountingCreationProps> = ({ selectTransacti
     return (
         <div className="accounting-creation__container">
             <div className="accounting-creation__type-button-container">
-                <div className="accounting-creation__transaction-type-button--expense">
+                <div className="transaction-type-button--expense">
                     <TransactionTypeButton
                         onClick={() => selectTransactionType("expense")}
                         label="支出"
@@ -19,7 +19,7 @@ const AccountingCreation: React.FC<AccountingCreationProps> = ({ selectTransacti
                     />
                 </div>
 
-                <div className="accounting-creation__transaction-type-button--income">
+                <div className="transaction-type-button--income">
                     <TransactionTypeButton
                         onClick={() => selectTransactionType("income")}
                         label="收入"
