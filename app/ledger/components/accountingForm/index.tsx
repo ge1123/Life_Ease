@@ -4,7 +4,7 @@ import AccountingCreation from "@/ledger/components/accountingForm/model/account
 import ExpenseForm from "./form/expenseForm";
 import IncomeForm from "./form/incomeForm";
 import useTransactionType from "@/ledger/hooks/useTransactionType";
-import '@/ledger/styles/accountingForm.scss';
+import '@/ledger/styles/index.scss';
 
 
 

@@ -1,4 +1,4 @@
-import '@/ledger/styles/accountingForm.scss';
+import '@/ledger/styles/index.scss';
 
 const StepSection: React.FC = () => {
     return (

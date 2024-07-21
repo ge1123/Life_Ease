@@ -1,4 +1,4 @@
-import '@/ledger/styles/accountingOverview.scss';
+import '@/ledger/styles/index.scss';
 import SummaryButtonProps from '@/ledger/components/accountingOverview/button/summaryButton';
 
 const AccountingOverview = () => {

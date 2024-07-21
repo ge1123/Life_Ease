@@ -1,4 +1,4 @@
-import '@/ledger/styles/accountingForm.scss'
+import '@/ledger/styles/index.scss';
 import { ReturnButtonProps } from "@/ledger/components/accountingForm/button/types";
 
 const ReturnButton: React.FC<ReturnButtonProps> = ({ onClick: resetTransactionType }) => {

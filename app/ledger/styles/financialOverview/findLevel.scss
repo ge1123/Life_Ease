@@ -1,0 +1,14 @@
+.fundLevel {
+    &__container {
+        @apply bg-white p-6 rounded-lg max-w-sm w-full mx-auto text-center;
+    }
+    &__header {
+        @apply text-2xl font-bold mb-4;
+    }
+    &__body {
+        @apply text-lg font-semibold mb-2;
+    }
+    &__context {
+        @apply text-2xl text-green-500 font-bold;
+    }
+}
