@@ -2,7 +2,7 @@
 import React from 'react';
 import { AccountingCreationProps } from '@/ledger/components/accountingForm/model/types';
 import TransactionTypeButton from '../button/transactionTypeButton';
-import '@/ledger/styles/accountingForm.scss';
+import '@/ledger/styles/accountingCreation.scss';
 
 
 const AccountingCreation: React.FC<AccountingCreationProps> = ({ selectTransactionType }) => {

@@ -1,5 +1,5 @@
 import { TransactionTypeButtonProps } from '@/ledger/components/accountingForm/button/types';
-import '@/ledger/styles/accountingForm.scss';
+import '@/ledger/styles/accountingCreation.scss';
 
 const TransactionTypeButton: React.FC<TransactionTypeButtonProps> = ({ onClick, label, description }) => {
     return (
