@@ -1,13 +1,14 @@
 import DailyExpenses from "@/ledger/components/financialOverview/dailyExpenses";
 import FundLevel from "@/ledger/components/financialOverview/fundLevel";
+import '@/ledger/styles/financialOverview.scss';
 
 const FinancialOverview = () => {
     return (
-        <div className="bg-white p-6 rounded-lg h-full">
-            <div className="mb-4">
+        <div className="financialOverview__container">
+            <div className="financialOverview__fundLevel-container">
                 <FundLevel />
             </div>
-            <hr className="border-t-2 border-gray-200 my-4" />
+            <hr className="financialOverview__stepSection" />
             <div>
                 <DailyExpenses />
             </div>

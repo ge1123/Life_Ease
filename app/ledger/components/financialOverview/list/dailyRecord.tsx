@@ -1,9 +1,10 @@
 import {DailyRecordProps} from '@/ledger/components/financialOverview/list/types';
+import '@/ledger/styles/financialOverview.scss';
 
 const DailyRecord: React.FC<DailyRecordProps> = ({ containerStyle, iconStyle, expenseRecord }) => {
     return (
         <>
-            <li className={`flex items-center text-lg p-2 bg-white rounded-lg shadow-md border-l-4 ${containerStyle}`}>
+            <li className={`financialOverview__dailyRecord__container ${containerStyle}`}>
                 <i className={`${iconStyle}`}></i>
                 <span>{expenseRecord}</span>
             </li>
