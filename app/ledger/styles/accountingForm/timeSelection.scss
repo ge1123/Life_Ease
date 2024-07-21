@@ -12,6 +12,6 @@
     }
 
     &__input{
-        @apply p-2 border border-gray-300 rounded;
+        @apply flex space-x-4 mb-4;
     }
 }

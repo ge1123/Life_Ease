@@ -1,0 +1,44 @@
+@import 'react-datepicker/dist/react-datepicker.css';
+
+
+/* 自訂 DatePicker 樣式 */
+.custom-datepicker-input {
+    @apply w-full p-2 border border-gray-300 rounded;
+}
+
+/* 調整 react-datepicker 預設樣式 */
+.react-datepicker-wrapper {
+    @apply w-full;
+}
+
+.react-datepicker__input-container {
+    @apply w-full;
+}
+
+.react-datepicker-popper {
+    @apply z-10;
+}
+
+.react-datepicker {
+    @apply border border-gray-200 rounded-lg shadow-lg;
+}
+
+.react-datepicker__header {
+    @apply bg-gray-100 border-b border-gray-200;
+}
+
+.react-datepicker__current-month {
+    @apply text-lg font-semibold;
+}
+
+.react-datepicker__day-name,
+.react-datepicker__day,
+.react-datepicker__time-name {
+    @apply w-10 h-10 leading-10;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--in-range,
+.react-datepicker__day--in-selecting-range {
+    @apply bg-blue-500 text-white;
+}
