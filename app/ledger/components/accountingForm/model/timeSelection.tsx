@@ -1,22 +1,19 @@
+import TimeSelectionButton from '@/ledger/components/accountingForm/button/timeSelectionButton';
+import '@/ledger/styles/index.scss';
+
 const TimeSelection = () => {
     return (
-        <div className="bg-white p-6 mb-4 rounded-lg">
-            <h1 className="text-2xl font-bold mb-4">時間</h1>
-            <div className="flex space-x-4 mb-4">
-                <button className="flex items-center text-white bg-yellow-500 rounded px-4 py-2 hover:bg-yellow-600 transition duration-300">
-                    <i className="fas fa-sun mr-2"></i>早
-                </button>
-                <button className="flex items-center text-white bg-red-400 rounded px-4 py-2 hover:bg-red-500 transition duration-300">
-                    <i className="fas fa-cloud-sun mr-2"></i>午
-                </button>
-                <button className="flex items-center text-white bg-purple-500 rounded px-4 py-2 hover:bg-purple-600 transition duration-300">
-                    <i className="fas fa-moon mr-2"></i>晚
-                </button>
+        <div className="timeSelection__container">
+            <h1 className="timeSelection__header">時間</h1>
+            <div className="timeSelection__buttons">
+                <TimeSelectionButton bgStyle='bg-yellow-500' hoverStyle='hover:bg-yellow-600 ' iconStyle='fas fa-sun mr-2' text='早' />
+                <TimeSelectionButton bgStyle='bg-red-400 ' hoverStyle='hover:bg-red-500' iconStyle='fas fa-cloud-sun mr-2' text='午' />
+                <TimeSelectionButton bgStyle='bg-purple-500 ' hoverStyle='hover:bg-purple-600' iconStyle='fas fa-moon mr-2' text='晚' />
             </div>
             <input
                 type="date"
                 placeholder="請輸入時間"
-                className="p-2 border border-gray-300 rounded"
+                className="timeSelection__input"
             />
         </div>
     );

@@ -7,3 +7,10 @@ export interface TransactionTypeButtonProps {
 export interface ReturnButtonProps{
     onClick: () => void;
 }
+
+export interface TimeSelectionButtonProps {
+    bgStyle: string,
+    hoverStyle: string,
+    iconStyle: string,
+    text: string
+}

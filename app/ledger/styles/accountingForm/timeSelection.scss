@@ -1,0 +1,17 @@
+.timeSelection{
+    &__container{
+        @apply bg-white p-6 mb-4 rounded-lg;
+    }
+
+    &__header{
+        @apply text-2xl font-bold mb-4;
+    }
+
+    &__buttons{
+        @apply flex space-x-4 mb-4;
+    }
+
+    &__input{
+        @apply p-2 border border-gray-300 rounded;
+    }
+}
