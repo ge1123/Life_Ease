@@ -5,7 +5,7 @@ const ReturnButton: React.FC<ReturnButtonProps> = ({ onClick: resetTransactionTy
     return (
         <button
             onClick={resetTransactionType}
-            className="accounting-form__returnButton">
+            className="returnButton">
             <i className="fas fa-arrow-left mr-2"></i>返回
         </button>
     )
