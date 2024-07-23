@@ -6,3 +6,8 @@ export interface UseTransactionType {
     setTransactionType: Dispatch<SetStateAction<string>>,
     setIsTypeSelected: Dispatch<SetStateAction<boolean>>
 }
+
+export interface UseTimeSelection {
+    timeSelection: string;
+    setTimeSelection: Dispatch<SetStateAction<string>>,
+}
