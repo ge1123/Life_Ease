@@ -1,7 +1,7 @@
 import TimeSelectionButton from '@/ledger/components/accountingForm/button/timeSelectionButton';
 import '@/ledger/styles/index.scss';
-import React, { useState } from 'react';
-import DateInput from '@/_components/datePicker';
+import React from 'react';
+import CustomDatepicker from '@/_components/customDatepicker';
 
 const TimeSelection = () => {
 
@@ -15,7 +15,7 @@ const TimeSelection = () => {
                 <TimeSelectionButton bgStyle='bg-purple-500 ' hoverStyle='hover:bg-purple-600' iconStyle='fas fa-moon mr-2' text='晚' />
             </div>
             <div className="timeSelection__input">
-                <DateInput date={new Date} />
+                <CustomDatepicker />
             </div>
         </div>
 
