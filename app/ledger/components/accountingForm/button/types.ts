@@ -4,7 +4,7 @@ export interface TransactionTypeButtonProps {
     description: string;
 }
 
-export interface ReturnButtonProps{
+export interface ReturnButtonProps {
     onClick: () => void;
 }
 
@@ -12,5 +12,6 @@ export interface TimeSelectionButtonProps {
     bgStyle: string,
     hoverStyle: string,
     iconStyle: string,
-    text: string
+    text: string,
+    onClick: () => void
 }
