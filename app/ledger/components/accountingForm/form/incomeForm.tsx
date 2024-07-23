@@ -1,5 +1,5 @@
 import CategorySelection from "@/ledger/components/accountingForm/model/categorySelection";
-import ExpenseAmount from "@/ledger/components/accountingForm/model/expenseAmount";
+import IncomeAmount from "@/ledger/components/accountingForm/model/incomeAmount";
 import ExpenseNotes from "@/ledger/components/accountingForm/model/expenseNotes";
 import TimeSelection from "@/ledger/components/accountingForm/model/timeSelection";
 import StepSection from "@/ledger/components/accountingForm/common/stepSection";
@@ -18,7 +18,7 @@ const IncomForm: React.FC<IncomFormProps> = ({ resetTransactionType }) => {
             <CategorySelection />
             <StepSection />
 
-            <ExpenseAmount />
+            <IncomeAmount />
             <StepSection />
 
             <ExpenseNotes />
