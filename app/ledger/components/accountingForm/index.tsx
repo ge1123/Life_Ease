@@ -18,7 +18,7 @@ const AccountingForm: React.FC = () => {
     setIsTypeSelected
   } = useTransactionType();
 
-  const handleSelectTransactionType = () => {
+  const handleSelectTransactionType = (transactionType: string) => {
     selectTransactionType(transactionType, { setTransactionType, setIsTypeSelected });
   };
 
