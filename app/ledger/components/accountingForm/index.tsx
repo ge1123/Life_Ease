@@ -42,7 +42,7 @@ const AccountingForm: React.FC = () => {
         <IncomeForm
           resetTransactionType={handleResetTransactionType}
         />
-      )}S
+      )}
     </div>
   );
 };
