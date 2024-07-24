@@ -65,9 +65,13 @@ const TimeSelection = () => {
                 )}
             </div>
             <div className="timeSelection__input">
-                <CustomDatepicker />
+                <CustomDatepicker
+                    selectedDate={selectedDate}
+                    onSelectedDateChanged={(date: Date) => setSelectedDate(date)}
+                />
             </div>
             <div>{TimePeriod[key]}</div>
+            <div>{selectedDate.toString()}</div>
         </div>
 
     );

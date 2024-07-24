@@ -1,20 +1,17 @@
 'use client';
 import { Datepicker } from 'flowbite-react';
 import React from 'react';
-import useDateSelection from '@/_hooks/useDatepicker';
-import { updateSelectedDate } from '@/_services/updateSelectedDate';
+import { CustomDatePickerProps } from '@/_components/type/customDatepicker.type';
 
 
 
-const CustomDatepicker: React.FC = () => {
-
-    const { selectedDate, setSelectedDate } = useDateSelection();
+const CustomDatepicker: React.FC<CustomDatePickerProps> = ({ selectedDate, onSelectedDateChanged }) => {
 
     return (
         <>
             <Datepicker
                 defaultDate={selectedDate}
-                onSelectedDateChanged={(date) => updateSelectedDate(date, setSelectedDate)}
+                onSelectedDateChanged={onSelectedDateChanged}
                 language='en'
             />
         </>
