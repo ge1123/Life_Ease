@@ -70,8 +70,6 @@ const TimeSelection = () => {
                     onSelectedDateChanged={(date: Date) => setSelectedDate(date)}
                 />
             </div>
-            <div>{TimePeriod[key]}</div>
-            <div>{selectedDate.toString()}</div>
         </div>
 
     );
