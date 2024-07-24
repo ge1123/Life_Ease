@@ -1,5 +1,5 @@
-import { SearchButtonProps } from '@/todolist/types/index.type';
 import BaseButton from '@/_components/baseButton';
+import { SearchButtonProps } from '@/todolist/types/index.type';
 
 const SearchButton: React.FC<SearchButtonProps> = ({ handleSearch }) => {
 

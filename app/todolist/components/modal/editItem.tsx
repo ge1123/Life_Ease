@@ -1,11 +1,11 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '@/todolist/styles/index.scss';
 import React from 'react';
-import useEditTodoState from '@/todolist/hooks/useEditTodo';
-import { EditItemProps } from '@/todolist/types/index.type';
 import EditCloseButton from '@/todolist/components/button/editCloseButton';
 import UpdateSubmitButton from '@/todolist/components/button/updateSubmitButton';
 import EditForm from '@/todolist/components/form/editForm';
+import useEditTodoState from '@/todolist/hooks/useEditTodo';
+import { EditItemProps } from '@/todolist/types/index.type';
 
 const EditItem: React.FC<EditItemProps> = ({ toggleModalVisibility, id }) => {
 

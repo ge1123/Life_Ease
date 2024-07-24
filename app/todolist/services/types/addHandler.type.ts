@@ -1,5 +1,5 @@
-import { TodoList, ToggleModalVisibility } from '@/todolist/types/index.type';
 import { Dispatch, SetStateAction } from 'react';
+import { TodoList, ToggleModalVisibility } from '@/todolist/types/index.type';
 
 export type HandleAddSubmit =
     (handleAdd: (todo: TodoList) => void,

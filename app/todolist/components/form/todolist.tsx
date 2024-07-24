@@ -3,13 +3,13 @@
 import '@/todolist/styles/index.scss';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import React from 'react';
-import TodoItem from '@/todolist/components/list/todoItem';
-import useTodoState from '@/todolist/hooks/useTodo';
 import MainLayout from '@/_layout/components/mainLayout';
-import SearchButton from '@/todolist/components/button/searchButton';
 import SearchBox from '@/todolist/components/box/searchBox';
+import SearchButton from '@/todolist/components/button/searchButton';
+import TodoItem from '@/todolist/components/list/todoItem';
 import AddItemModal from '@/todolist/components/modal/addTodoModal';
 import { TodoProvider } from '@/todolist/context/todoContext';
+import useTodoState from '@/todolist/hooks/useTodo';
 
 
 const TodoList: React.FC = () => {

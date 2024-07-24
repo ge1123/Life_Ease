@@ -1,5 +1,5 @@
-import { BASE_URLS } from '@/_utils/config';
 import { fetchListDataAsync, } from '@/_utils/apiClient';
+import { BASE_URLS } from '@/_utils/config';
 
 
 type SetSideBarMenu = (data: SidebarMenu[]) => void;

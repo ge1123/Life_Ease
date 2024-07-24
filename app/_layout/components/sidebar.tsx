@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import MenuButtons from '@/_layout/components/menuButtons';
-import {BASE_URLS} from '@/_utils/config';
 import useSidebarHook from '@/_layout/hooks/useSidebarHook';
+import {BASE_URLS} from '@/_utils/config';
 import "@/_styles/menu.style.scss";
 
 export default function Sidebar() {

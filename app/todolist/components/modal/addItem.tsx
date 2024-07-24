@@ -2,11 +2,11 @@
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import '@/todolist/styles/index.scss';
 import React from 'react';
+import AddCloseButton from '@/todolist/components/button/addCloseButton';
+import AddSubmitButton from '@/todolist/components/button/addSubmitButton';
+import AddForm from '@/todolist/components/form/addForm';
 import useAddTodoState from '@/todolist/hooks/useAddTodo';
 import { AddItemProps } from '@/todolist/types/index.type';
-import AddSubmitButton from '@/todolist/components/button/addSubmitButton';
-import AddCloseButton from '@/todolist/components/button/addCloseButton';
-import AddForm from '@/todolist/components/form/addForm';
 
 const AddItem: React.FC<AddItemProps> = ({ toggleModalVisibility }) => {
 

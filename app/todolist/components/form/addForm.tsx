@@ -1,5 +1,5 @@
-import { AddFormProps } from '@/todolist/types/index.type';
 import InputField from '@/todolist/components/box/inputField';
+import { AddFormProps } from '@/todolist/types/index.type';
 
 
 const AddForm: React.FC<AddFormProps> = ({ todo, formatDate, handleAddChange }) => {

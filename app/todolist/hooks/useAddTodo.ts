@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
+import { useTodoContext } from '@/todolist/context/todoContext';
 import { handleAddChange, formatDate, handleAddSubmit } from '@/todolist/services/index';
 import { TodoList, UseAddTodoState } from '@/todolist/types/index.type';
-import { useTodoContext } from '@/todolist/context/todoContext';
 
 const useAddTodoState: UseAddTodoState = (toggleModalOpenStatus) => {
 

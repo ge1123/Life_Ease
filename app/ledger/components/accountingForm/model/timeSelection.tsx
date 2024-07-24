@@ -2,9 +2,10 @@ import TimeSelectionButton from '@/ledger/components/accountingForm/button/timeS
 import '@/ledger/styles/index.scss';
 import React from 'react';
 import CustomDatepicker from '@/_components/customDatepicker';
-import useTimePeriodSelection from '@/ledger/hooks/useTimePeriodSelection';
 import { TimePeriod } from '@/_enums/timePeriod';
+import useDateSelection from '@/_hooks/useDatepicker';
 import { getEnumKeyByEnumValue } from '@/_utils/getEnumKeyByEnumValue';
+import useTimePeriodSelection from '@/ledger/hooks/useTimePeriodSelection';
 
 const TimeSelection = () => {
 
@@ -12,6 +13,9 @@ const TimeSelection = () => {
         timePeriodSelection,
         setTimePeriodSelection
     } = useTimePeriodSelection();
+
+    const { selectedDate, setSelectedDate } = useDateSelection();
+
 
     const timeOptions = [
         {

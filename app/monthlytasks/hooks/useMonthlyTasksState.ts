@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from 'react';
-import { fetchMonthlyTasksData } from '@/monthlytasks/services/api';
 import { MONTHS_DICT, getCurrentMonthIndex } from '@/monthlytasks/constants';
+import { fetchMonthlyTasksData } from '@/monthlytasks/services/api';
 
 interface UseMonthlyTasksProps {
     fetchMonthlyTasks: FetchMonthlyTasks;

@@ -1,5 +1,5 @@
-import { EditButtonProps } from '@/todolist/types/index.type';
 import BaseButton, {} from '@/_components/baseButton';
+import { EditButtonProps } from '@/todolist/types/index.type';
 
 const EditButton: React.FC<EditButtonProps> = ({ toggleModal }) => {
  

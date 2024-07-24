@@ -1,5 +1,5 @@
-import { AddSubmitButtonProps } from '@/todolist/types/index.type';
 import BaseButton from '@/_components/baseButton';
+import { AddSubmitButtonProps } from '@/todolist/types/index.type';
 
 const AddSubmitButton: React.FC<AddSubmitButtonProps> = ({ handleAddSubmit }) => {
 
