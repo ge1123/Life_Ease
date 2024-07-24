@@ -2,6 +2,10 @@ import { createContext, ReactNode, useContext } from "react";
 import useDateSelection from '@/_hooks/useDatepicker';
 import { ExpenseContextType } from "@/ledger/contexts/types/expenseContext.type";
 import useTimePeriodSelection from "@/ledger/hooks/useTimePeriodSelection";
+import useCategory from "../hooks/useCategory";
+import useExpenseAmount from "../hooks/useExpenseAmount";
+import useExpenseNote from "../hooks/useExpenseNote";
+import useStoreInfo from "../hooks/useStoreName";
 
 const ExpenseContext = createContext<ExpenseContextType | undefined>(undefined);
 
@@ -22,13 +26,29 @@ export const ExpenseProvider = ({ children }: { children: ReactNode }) => {
 
     const { selectedDate, setSelectedDate } = useDateSelection();
 
+    const { category, setCategory } = useCategory();
+
+    const { storeName, setStoreName } = useStoreInfo();
+
+    const { expenseAmount, setExpenseAmount } = useExpenseAmount();
+
+    const { expenseNote, setExpenseNote } = useExpenseNote();
+
     return (
         <ExpenseContext.Provider
             value={{
                 timePeriodSelection,
-                setTimePeriodSelection,
                 selectedDate,
-                setSelectedDate
+                category,
+                storeName,
+                expenseAmount,
+                expenseNote,
+                setTimePeriodSelection,
+                setSelectedDate,
+                setCategory,
+                setStoreName,
+                setExpenseAmount,
+                setExpenseNote
             }}>
             {children}
         </ExpenseContext.Provider>
