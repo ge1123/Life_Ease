@@ -3,6 +3,7 @@
 import ExpenseForm from "@/ledger/components/accountingForm/form/expenseForm";
 import IncomeForm from "@/ledger/components/accountingForm/form/incomeForm";
 import AccountingCreation from "@/ledger/components/accountingForm/model/accountingCreation";
+import { ExpenseProvider } from "@/ledger/contexts/expenseContext";
 import useTransactionType from "@/ledger/hooks/useTransactionType";
 import { resetTransactionType, selectTransactionType } from "@/ledger/services/transactionTypeService";
 import '@/ledger/styles/index.scss';
@@ -26,6 +27,7 @@ const AccountingForm: React.FC = () => {
     resetTransactionType({ setTransactionType, setIsTypeSelected });
   };
 
+
   return (
     <div className="accounting-form__container">
       {isTypeSelected === false && (
@@ -34,9 +36,11 @@ const AccountingForm: React.FC = () => {
         />
       )}
       {transactionType === "expense" && (
-        <ExpenseForm
-          resetTransactionType={handleResetTransactionType}
-        />
+        <ExpenseProvider>
+          <ExpenseForm
+            resetTransactionType={handleResetTransactionType}
+          />
+        </ExpenseProvider>
       )}
       {transactionType === "income" && (
         <IncomeForm

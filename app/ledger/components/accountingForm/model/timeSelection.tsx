@@ -2,19 +2,18 @@ import '@/ledger/styles/index.scss';
 import React from 'react';
 import CustomDatepicker from '@/_components/customDatepicker';
 import { TimePeriod } from '@/_enums/timePeriod';
-import useDateSelection from '@/_hooks/useDatepicker';
 import { getEnumKeyByEnumValue } from '@/_utils/getEnumKeyByEnumValue';
 import TimeSelectionButton from '@/ledger/components/accountingForm/button/timeSelectionButton';
-import useTimePeriodSelection from '@/ledger/hooks/useTimePeriodSelection';
+import { useExpenseContext } from '@/ledger/contexts/expenseContext';
 
 const TimeSelection = () => {
-
     const {
         timePeriodSelection,
-        setTimePeriodSelection
-    } = useTimePeriodSelection();
+        setTimePeriodSelection,
+        selectedDate,
+        setSelectedDate } = useExpenseContext();
 
-    const { selectedDate, setSelectedDate } = useDateSelection();
+
 
 
     const timeOptions = [
@@ -43,8 +42,6 @@ const TimeSelection = () => {
             icon: 'fas fa-cloud-moon'
         }
     ];
-
-    const key = timePeriodSelection as keyof typeof TimePeriod;
 
     return (
 

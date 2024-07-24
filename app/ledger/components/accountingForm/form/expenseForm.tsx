@@ -8,10 +8,10 @@ import ExpenseAmount from "@/ledger/components/accountingForm/model/expenseAmoun
 import ExpenseNotes from "@/ledger/components/accountingForm/model/expenseNotes";
 import StoreInfo from "@/ledger/components/accountingForm/model/storeInfo";
 import TimeSelection from "@/ledger/components/accountingForm/model/timeSelection";
+import { useExpenseContext } from "@/ledger/contexts/expenseContext";
 
 
 const ExpenseForm: React.FC<ExpenseFormProps> = ({ resetTransactionType }) => {
-
 
     return (
         <>
