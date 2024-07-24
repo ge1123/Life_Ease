@@ -8,6 +8,6 @@ export interface UseTransactionType {
 }
 
 export interface UseTimeSelection {
-    timeSelection: string;
-    setTimeSelection: Dispatch<SetStateAction<string>>,
+    timePeriodSelection: string;
+    setTimePeriodSelection: Dispatch<SetStateAction<string>>,
 }
