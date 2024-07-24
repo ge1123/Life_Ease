@@ -5,7 +5,7 @@ import '@fortawesome/fontawesome-free/css/all.min.css';
 import React from 'react';
 import AddButton from '@/todolist/components/button/addButton';
 import AddItem from '@/todolist/components/modal/addItem';
-import useModal from '@/todolist/hooks/useModal';
+import {useModal} from '@/todolist/hooks/useModal';
 import { AddItemModalProps } from '@/todolist/types/index.type';
 
 

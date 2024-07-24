@@ -9,7 +9,7 @@ import SearchButton from '@/todolist/components/button/searchButton';
 import TodoItem from '@/todolist/components/list/todoItem';
 import AddItemModal from '@/todolist/components/modal/addTodoModal';
 import { TodoProvider } from '@/todolist/context/todoContext';
-import useTodoState from '@/todolist/hooks/useTodo';
+import {useTodoState} from '@/todolist/hooks/useTodo';
 
 
 const TodoList: React.FC = () => {

@@ -4,7 +4,7 @@ import React from 'react';
 import EditCloseButton from '@/todolist/components/button/editCloseButton';
 import UpdateSubmitButton from '@/todolist/components/button/updateSubmitButton';
 import EditForm from '@/todolist/components/form/editForm';
-import useEditTodoState from '@/todolist/hooks/useEditTodo';
+import {useEditTodoState} from '@/todolist/hooks/useEditTodo';
 import { EditItemProps } from '@/todolist/types/index.type';
 
 const EditItem: React.FC<EditItemProps> = ({ toggleModalVisibility, id }) => {
