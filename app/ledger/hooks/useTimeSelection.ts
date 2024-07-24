@@ -9,7 +9,7 @@ const useTimeSelection = (): UseTimeSelection => {
     // 自動抓取時間給予預設時段
     const timePeriod = getTimePeriod();
 
-    const [timeSelection, setTimeSelection] = useState(timePeriod);
+    const [timeSelection, setTimeSelection] = useState<string>(timePeriod);
 
     return {
         timeSelection,
