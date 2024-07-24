@@ -3,6 +3,8 @@ import '@/ledger/styles/index.scss';
 import React from 'react';
 import CustomDatepicker from '@/_components/customDatepicker';
 import useTimeSelection from '@/ledger/hooks/useTimeSelection';
+import { TimePeriod } from '@/_enums/timePeriod';
+import { getEnumKeyByEnumValue } from '@/_utils/getEnumKeyByEnumValue';
 
 const TimeSelection = () => {
 
@@ -11,14 +13,52 @@ const TimeSelection = () => {
         setTimeSelection
     } = useTimeSelection();
 
+    const timeOptions = [
+        { 
+            key: getEnumKeyByEnumValue(TimePeriod, TimePeriod.Morning), 
+            text: TimePeriod.Morning, 
+            bgColor: 'yellow', 
+            icon: 'fas fa-sun' 
+        },
+        { 
+            key: getEnumKeyByEnumValue(TimePeriod, TimePeriod.Afternoon), 
+            text: TimePeriod.Afternoon, 
+            bgColor: 'red', 
+            icon: 'fas fa-cloud-sun' 
+        },
+        { 
+            key: getEnumKeyByEnumValue(TimePeriod, TimePeriod.Night), 
+            text: TimePeriod.Night, 
+            bgColor: 'purple', 
+            icon: 'fas fa-moon' 
+        },
+        { 
+            key: getEnumKeyByEnumValue(TimePeriod, TimePeriod.LateNight), 
+            text: TimePeriod.LateNight, 
+            bgColor: 'gray', 
+            icon: 'fas fa-cloud-moon' 
+        }
+    ];
+
+
     return (
 
         <div className="timeSelection__container">
-            <h1 className="timeSelection__header">時間</h1>
+            <h1 className="timeSelection__header">時段</h1>
+            <div>{timeSelection}</div>
             <div className="timeSelection__buttons">
-                <TimeSelectionButton bgStyle={`${timeSelection === "早" ? "bg-amber-300 scale-105 border-2 border-amber-600" : "bg-amber-500"}`} hoverStyle='hover:bg-amber-300 ' iconStyle='fas fa-sun mr-2' text='早' onClick={() => setTimeSelection('早')} />
-                <TimeSelectionButton bgStyle={`${timeSelection === "午" ? "bg-red-300 scale-105 border-2 border-red-600" : "bg-red-500"}`} hoverStyle='hover:bg-red-300' iconStyle='fas fa-cloud-sun mr-2' text='午' onClick={() => setTimeSelection('午')} />
-                <TimeSelectionButton bgStyle={`${timeSelection === "晚" ? "bg-purple-300 scale-105 border-2 border-purple-600" : "bg-purple-500"}`} hoverStyle='hover:bg-purple-300' iconStyle='fas fa-moon mr-2' text='晚' onClick={() => setTimeSelection('晚')} />
+                {timeOptions.map(option =>
+                    <TimeSelectionButton
+                        key={option.key}
+                        bgStyle={`${timeSelection === option.key ?
+                            `bg-${option.bgColor}-400 scale-105 border-2 border-${option.bgColor}-600` :
+                            `bg-${option.bgColor}-500`}`}
+                        hoverStyle={`hover:bg-${option.bgColor}-300`}
+                        iconStyle={option.icon}
+                        text={option.text}
+                        onClick={() => setTimeSelection(option.key)}
+                    />
+                )}
             </div>
             <div className="timeSelection__input">
                 <CustomDatepicker />
