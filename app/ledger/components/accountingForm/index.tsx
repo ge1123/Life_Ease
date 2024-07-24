@@ -1,11 +1,11 @@
 'use client';
 
+import ExpenseForm from "@/ledger/components/accountingForm/form/expenseForm";
+import IncomeForm from "@/ledger/components/accountingForm/form/incomeForm";
 import AccountingCreation from "@/ledger/components/accountingForm/model/accountingCreation";
 import useTransactionType from "@/ledger/hooks/useTransactionType";
-import ExpenseForm from "./form/expenseForm";
-import IncomeForm from "./form/incomeForm";
-import '@/ledger/styles/index.scss';
 import { resetTransactionType, selectTransactionType } from "@/ledger/services/transactionTypeService";
+import '@/ledger/styles/index.scss';
 
 
 
