@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import Modal from 'react-modal';
+import SaveModalButton from "@/_components/modal/saveButtonModal";
 import ReturnButton from '@/ledger/components/accountingForm/button/returnButton';
 import SaveButton from '@/ledger/components/accountingForm/button/saveButton';
 import StepSection from "@/ledger/components/accountingForm/common/stepSection";
@@ -8,10 +10,18 @@ import ExpenseAmount from "@/ledger/components/accountingForm/model/expenseAmoun
 import ExpenseNotes from "@/ledger/components/accountingForm/model/expenseNotes";
 import StoreInfo from "@/ledger/components/accountingForm/model/storeInfo";
 import TimeSelection from "@/ledger/components/accountingForm/model/timeSelection";
-import { useExpenseContext } from "@/ledger/contexts/expenseContext";
 
 
 const ExpenseForm: React.FC<ExpenseFormProps> = ({ resetTransactionType }) => {
+
+    const [isSuccess, setIsSuccess] = useState<boolean>(false);
+
+    const handle = () => {
+        setIsSuccess(true);
+        setTimeout(() => {
+            setIsSuccess(false);
+        }, 3000);
+    }
 
     return (
         <>
@@ -31,7 +41,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ resetTransactionType }) => {
 
             <div className="flex justify-end space-x-4">
                 <ReturnButton onClick={resetTransactionType} />
-                <SaveButton />
+                <SaveModalButton onClick={handle} isShow={isSuccess} />
             </div>
         </>
     );
