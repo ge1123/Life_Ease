@@ -1,10 +1,9 @@
 'use client';
-import Timeline from '@/monthlytasks/components/timeline';
-import MainLayout from '@/_layout/components/mainLayout';
+import { Dispatch, SetStateAction } from 'react';
 import DownList from '@/_components/monthly.downlist';
+import MainLayout from '@/_layout/components/mainLayout';
 import '@/monthlytasks/styles/index.scss';
 import { useMonthlyTasksState } from '@/monthlytasks/hooks/index';
-import { Dispatch, SetStateAction } from 'react';
 
 interface ChooseMonthProps {
     selectedMonth: number;

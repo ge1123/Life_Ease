@@ -1,0 +1,9 @@
+.accounting-creation {
+    &__container {
+        @apply bg-white p-6 mb-4 rounded-lg flex items-center justify-center;
+    }
+
+    &__type-button-container {
+        @apply flex space-x-4;
+    }
+}

@@ -1,5 +1,5 @@
-import { AddButtonProps } from '@/todolist/types/index.type';
 import BaseButton from '@/_components/baseButton';
+import { AddButtonProps } from '@/todolist/types/index.type';
 
 const AddButton: React.FC<AddButtonProps> = ({ toggleModalVisibility }) => {
     return (

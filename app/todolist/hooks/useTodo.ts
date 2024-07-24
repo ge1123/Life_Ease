@@ -1,10 +1,10 @@
 import { useState } from 'react';
+import { useTodoContext } from '@/todolist/context/todoContext';
 import { handleSearchChange, handleSearch } from '@/todolist/services/index';
 import { UseTodoState } from '@/todolist/types/index.type';
-import { useTodoContext } from '@/todolist/context/todoContext';
 
 
-const useTodoState: UseTodoState = () => {
+export const useTodoState: UseTodoState = () => {
 
     const todoContext = useTodoContext();
 
@@ -27,4 +27,3 @@ const useTodoState: UseTodoState = () => {
     };
 }
 
-export default useTodoState;

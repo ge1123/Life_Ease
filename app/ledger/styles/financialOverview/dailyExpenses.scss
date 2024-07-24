@@ -1,0 +1,14 @@
+.dailyExpenses {
+    &__container {
+        @apply bg-white p-6 rounded-lg max-w-md w-full mx-auto;
+    }
+    &__header {
+        @apply text-2xl font-bold mb-4 text-center;
+    }
+    &__amount {
+        @apply text-xl text-green-500 font-bold mb-4 text-center;
+    }
+    &__list {
+        @apply list-none space-y-2 p-1 rounded-lg;
+    }
+}

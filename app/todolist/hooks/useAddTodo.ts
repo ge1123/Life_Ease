@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { handleAddChange, formatDate, handleAddSubmit } from '@/todolist/services/index';
-import { TodoList, UseAddTodoState } from '@/todolist/types/index.type';
 import { useTodoContext } from '@/todolist/context/todoContext';
+import { handleAddChange, formatDate, handleAddSubmit } from '@/todolist/services/index';
+import { TodoList, UseAddTodo } from '@/todolist/types/index.type';
 
-const useAddTodoState: UseAddTodoState = (toggleModalOpenStatus) => {
+export const useAddTodo: UseAddTodo = (toggleModalOpenStatus) => {
 
     const todoContext = useTodoContext();
 
@@ -23,4 +23,3 @@ const useAddTodoState: UseAddTodoState = (toggleModalOpenStatus) => {
     })
 }
 
-export default useAddTodoState;

@@ -1,5 +1,5 @@
-import { AddCloseButtonProps } from '@/todolist/types/index.type';
 import BaseButton from '@/_components/baseButton';
+import { AddCloseButtonProps } from '@/todolist/types/index.type';
 
 
 const EditCloseButton: React.FC<AddCloseButtonProps> = ({ toggleModalOpenStatus }) => {

@@ -1,0 +1,10 @@
+.accounting-form{
+    &__container{
+        @apply bg-white rounded-lg p-6 space-y-4;
+    }
+
+    &__stepSection{
+        @apply border-t-2 border-gray-200 my-4;
+    }
+}
+

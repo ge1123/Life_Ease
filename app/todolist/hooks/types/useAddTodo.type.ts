@@ -10,5 +10,5 @@ type UseAddTodo = {
 
 
 
-export type UseAddTodoState = (toggleModalOpenState:ToggleModalVisibility) => UseAddTodo;
+export type UseAddTodo = (toggleModalOpenState:ToggleModalVisibility) => UseAddTodo;
 
