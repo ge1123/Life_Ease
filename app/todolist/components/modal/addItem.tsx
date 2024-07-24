@@ -5,7 +5,7 @@ import React from 'react';
 import AddCloseButton from '@/todolist/components/button/addCloseButton';
 import AddSubmitButton from '@/todolist/components/button/addSubmitButton';
 import AddForm from '@/todolist/components/form/addForm';
-import useAddTodoState from '@/todolist/hooks/useAddTodo';
+import useAddTodo from '@/todolist/hooks/useAddTodo';
 import { AddItemProps } from '@/todolist/types/index.type';
 
 const AddItem: React.FC<AddItemProps> = ({ toggleModalVisibility }) => {
@@ -15,7 +15,7 @@ const AddItem: React.FC<AddItemProps> = ({ toggleModalVisibility }) => {
         handleAddChange,
         handleAddSubmit,
         formatDate
-    } = useAddTodoState(toggleModalVisibility);
+    } = useAddTodo(toggleModalVisibility);
 
     return (
         <div className="addItem__background">

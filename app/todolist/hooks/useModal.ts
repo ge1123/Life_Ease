@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { toggleModalVisibility } from '@/todolist/services/index';
 import { UseModalHook } from '@/todolist/types/index.type';
 
-const useModal: UseModalHook = () => {
+export const useModal: UseModalHook = () => {
 
     // 顯示/隱藏 編輯事項視窗 
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,4 +19,3 @@ const useModal: UseModalHook = () => {
 }
 
 
-export default useModal;

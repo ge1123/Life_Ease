@@ -10,7 +10,7 @@ import { useTodoContext } from '../context/todoContext';
  * @param updateTodo - 用於更新 todo 項目的異步函數
  * @returns 包含 todo 資料對象，處理變更的函數和提交編輯的函數
  */
-const useEditTodoState: UseEditTodoState = (toggleModal, id) => {
+export const useEditTodoState: UseEditTodoState = (toggleModal, id) => {
     const todoContext: TodoContextType = useTodoContext();
 
     const item: TodoList | undefined = todoContext.todos.find(todo => todo.id === id);
@@ -50,4 +50,3 @@ const useEditTodoState: UseEditTodoState = (toggleModal, id) => {
 
 
 
-export default useEditTodoState;

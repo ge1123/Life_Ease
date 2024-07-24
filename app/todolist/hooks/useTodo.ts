@@ -4,7 +4,7 @@ import { handleSearchChange, handleSearch } from '@/todolist/services/index';
 import { UseTodoState } from '@/todolist/types/index.type';
 
 
-const useTodoState: UseTodoState = () => {
+export const useTodoState: UseTodoState = () => {
 
     const todoContext = useTodoContext();
 
@@ -27,4 +27,3 @@ const useTodoState: UseTodoState = () => {
     };
 }
 
-export default useTodoState;
