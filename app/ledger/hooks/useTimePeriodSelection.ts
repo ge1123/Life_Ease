@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { UseTimeSelection } from "@/ledger/hooks/types";
+import { UseTimePeriodSelection } from "@/ledger/hooks/types";
 import getTimePeriod from "@/_services/getTimePeriod";
 
 
 
-const useTimeSelection = (): UseTimeSelection => {
+const useTimePeriodSelection = (): UseTimePeriodSelection => {
 
     // 自動抓取時間給予預設時段
     const timePeriod = getTimePeriod();
@@ -18,4 +18,4 @@ const useTimeSelection = (): UseTimeSelection => {
 }
 
 
-export default useTimeSelection;
+export default useTimePeriodSelection;
