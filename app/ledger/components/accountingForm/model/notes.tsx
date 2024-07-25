@@ -1,4 +1,4 @@
-const ExpenseNotes = () => {
+const Notes = () => {
     return (
         <div className="bg-white p-6 mb-4 rounded-lg">
             <h1 className="text-2xl font-bold mb-4">備註</h1>
@@ -11,4 +11,4 @@ const ExpenseNotes = () => {
 };
 
 
-export default ExpenseNotes;
+export default Notes;
