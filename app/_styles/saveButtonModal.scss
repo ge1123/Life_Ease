@@ -1,0 +1,24 @@
+.save-button {
+    @apply px-4 py-2 bg-green-500 text-white rounded cursor-pointer;
+    @apply hover:bg-green-600;
+}
+
+.modal {
+    &__content {
+        @apply fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded shadow-lg;
+    }
+    &__title {
+        @apply text-2xl mb-4;
+    }
+    &__message {
+        @apply mb-4;
+    }
+    &__close-button {
+        @apply mt-4 px-4 py-2 bg-green-500 text-white rounded cursor-pointer;
+        @apply hover:bg-green-600;
+    }
+}
+
+.overlay {
+    @apply fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50;
+}
