@@ -15,3 +15,8 @@ export interface TimeSelectionButtonProps {
     text: string,
     onClick: () => void
 }
+
+export interface CategoryButtonProps {
+    category: string;
+    bgColor: string;
+}
