@@ -13,6 +13,4 @@ export interface BaseButtonProps {
 }
 
 export interface SaveButtonProps {
-    onClick: () => void;
-    isShow: boolean;
 }

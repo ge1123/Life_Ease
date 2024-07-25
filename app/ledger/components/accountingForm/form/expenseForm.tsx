@@ -12,14 +12,7 @@ import TimeSelection from "@/ledger/components/accountingForm/model/timeSelectio
 
 const ExpenseForm: React.FC<ExpenseFormProps> = ({ resetTransactionType }) => {
 
-    const [isSuccess, setIsSuccess] = useState<boolean>(false);
 
-    const handle = () => {
-        setIsSuccess(true);
-        setTimeout(() => {
-            setIsSuccess(false);
-        }, 3000);
-    }
 
     return (
         <>
@@ -39,7 +32,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ resetTransactionType }) => {
 
             <div className="flex justify-end space-x-4">
                 <ReturnButton onClick={resetTransactionType} />
-                <SaveModalButton onClick={handle} isShow={isSuccess} />
+                <SaveModalButton />
             </div>
         </>
     );

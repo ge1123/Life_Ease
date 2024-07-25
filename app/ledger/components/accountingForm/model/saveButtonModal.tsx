@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import Modal from 'react-modal';
 import '@/ledger/styles/accountingForm/saveButtonModal.scss';
 import { SaveButtonProps } from '@/ledger/components/accountingForm/model/types';
@@ -6,7 +7,16 @@ import { useExpenseContext } from '@/ledger/contexts/expenseContext';
 
 
 
-const SaveModalButton: React.FC<SaveButtonProps> = ({ onClick, isShow }) => {
+const SaveModalButton: React.FC<SaveButtonProps> = () => {
+
+    const [isSuccess, setIsSuccess] = useState<boolean>(false);
+
+    const handle = () => {
+        setIsSuccess(true);
+        setTimeout(() => {
+            setIsSuccess(false);
+        }, 3000);
+    }
 
     const {
         timePeriodSelection,
@@ -21,11 +31,11 @@ const SaveModalButton: React.FC<SaveButtonProps> = ({ onClick, isShow }) => {
         <>
             <button
                 className="saveButton"
-                onClick={onClick}
+                onClick={handle}
             >
                 <i className="fas fa-save mr-2"></i>儲存
             </button>
-            {isShow &&
+            {isSuccess &&
                 <Modal
                     isOpen
                     contentLabel="Success Modal"

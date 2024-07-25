@@ -9,15 +9,6 @@ import Notes from "@/ledger/components/accountingForm/model/notes";
 import TimeSelection from "@/ledger/components/accountingForm/model/timeSelection";
 
 const IncomForm: React.FC<IncomFormProps> = ({ resetTransactionType }) => {
-    const [isSuccess, setIsSuccess] = useState<boolean>(false);
-
-    const handle = () => {
-        setIsSuccess(true);
-        setTimeout(() => {
-            setIsSuccess(false);
-        }, 3000);
-    }
-
 
     return (
         <>
@@ -34,7 +25,7 @@ const IncomForm: React.FC<IncomFormProps> = ({ resetTransactionType }) => {
 
             <div className="flex justify-end space-x-4">
                 <ReturnButton onClick={resetTransactionType} />
-                <SaveModalButton onClick={handle} isShow={isSuccess} />
+                <SaveModalButton />
             </div>
         </>
     );
