@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import SaveModalButton from '@/_components/modal/saveButtonModal';
+import SaveModalButton from '@/ledger/components/accountingForm/model/saveButtonModal';
 import ReturnButton from '@/ledger/components/accountingForm/button/returnButton';
 import StepSection from "@/ledger/components/accountingForm/common/stepSection";
 import { IncomFormProps } from "@/ledger/components/accountingForm/form/types";

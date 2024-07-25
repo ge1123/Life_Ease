@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import SaveModalButton from "@/_components/modal/saveButtonModal";
+import SaveModalButton from "@/ledger/components/accountingForm/model/saveButtonModal";
 import ReturnButton from '@/ledger/components/accountingForm/button/returnButton';
 import StepSection from "@/ledger/components/accountingForm/common/stepSection";
 import { ExpenseFormProps } from "@/ledger/components/accountingForm/form/types";
@@ -32,7 +32,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ resetTransactionType }) => {
             <StoreInfo />
             <StepSection />
 
-            <Amount />
+            <Amount type="支出金額" />
             <StepSection />
 
             <Notes />
