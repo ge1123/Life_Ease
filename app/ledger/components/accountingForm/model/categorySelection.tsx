@@ -1,4 +1,5 @@
 import CategoryButton from "@/ledger/components/accountingForm/button/categoryButton";
+import { useExpenseContext } from "@/ledger/contexts/expenseContext";
 
 const CategorySelection = () => {
 
@@ -21,27 +22,25 @@ const CategorySelection = () => {
         }
     ]
 
+
+    const { category, setCategory } = useExpenseContext();
+
     return (
         <div className="bg-white p-6 mb-4 rounded-lg">
             <h1 className="text-2xl font-bold mb-4">類別</h1>
             <div className="flex space-x-4">
-
                 {categoryOptions.map(option => (
                     <CategoryButton
+                        onClick={setCategory}
                         key={option.key}
                         category={option.category}
-                        bgColor={option.bgColor}
+                        bgStyle={category === option.category ?
+                            `scale-105 border-2 border-${option.bgColor}-600 bg-${option.bgColor}-500` :
+                            `bg-${option.bgColor}-500`}
+                        hoverStyle={`hover:bg-${option.bgColor}-600`}
                     />
                 ))}
-                {/* <button className="text-white bg-green-500 rounded px-4 py-2 hover:bg-green-600 transition duration-300">
-                    主食
-                </button>
-                <button className="text-white bg-yellow-500 rounded px-4 py-2 hover:bg-yellow-600 transition duration-300">
-                    點心
-                </button>
-                <button className="text-white bg-teal-500 rounded px-4 py-2 hover:bg-teal-600 transition duration-300">
-                    飲品
-                </button> */}
+
             </div>
         </div>
     );

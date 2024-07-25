@@ -3,10 +3,11 @@ import { CategoryButtonProps } from '@/ledger/components/accountingForm/button/t
 
 
 
-const CategoryButton: React.FC<CategoryButtonProps> = ({ category, bgColor }) => {
+const CategoryButton: React.FC<CategoryButtonProps> = ({ category, bgStyle, onClick, hoverStyle }) => {
     return (
         <button
-            className={`categoryButton bg-${bgColor}-500 hover:bg-${bgColor}-600`}>
+            onClick={() => onClick(category)}
+            className={`categoryButton ${bgStyle} ${hoverStyle}`}>
             {category}
         </button>
     )

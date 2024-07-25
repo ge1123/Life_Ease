@@ -9,14 +9,16 @@ export interface ReturnButtonProps {
 }
 
 export interface TimeSelectionButtonProps {
-    bgStyle: string,
-    hoverStyle: string,
-    iconStyle: string,
-    text: string,
-    onClick: () => void
+    bgStyle: string;
+    hoverStyle: string;
+    iconStyle: string;
+    text: string;
+    onClick: () => void;
 }
 
 export interface CategoryButtonProps {
     category: string;
-    bgColor: string;
+    bgStyle: string;
+    hoverStyle: string;
+    onClick: (category:string) => void;
 }
